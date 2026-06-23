@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zaim Sharoon — Work</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root {
+      --bone:   #F2F0EB;
+      --ink:    #111111;
+      --signal: #C8390A;
+      --amber:  #D4880E;
+      --slate:  #2E4057;
+      --muted:  #D8D5CF;
+      --fd: 'Space Grotesk', sans-serif;
+      --fm: 'DM Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--fd); background: var(--bone); color: var(--ink); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ::selection { background: var(--ink); color: var(--signal); }
+
+    .work-section {
+      background: var(--bone);
+      border-top: 3px solid var(--ink);
+    }
+
+    /* ── HEADER ── */
+    .work-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 3px solid var(--ink);
+    }
+    @media (max-width: 768px) { .work-header { grid-template-columns: 1fr; } }
+
+    .wh-left {
+      background: var(--ink);
+      padding: 3rem 2.5rem;
+      display: flex; flex-direction: column;
+      justify-content: space-between; gap: 2rem;
+      border-right: 3px solid var(--ink);
+    }
+    .wh-coord {
+      font-family: var(--fm);
+      font-size: 0.58rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(242,240,235,0.3);
+    }
+    .wh-title {
+      font-family: var(--fd); font-weight: 900;
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      text-transform: uppercase; letter-spacing: -0.04em;
+      line-height: 0.88; color: var(--bone);
+    }
+    .wh-title em { color: var(--signal); font-style: normal; }
+    .wh-sub {
+      font-family: var(--fm);
+      font-size: 0.6rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(242,240,235,0.4);
+      max-width: 320px; line-height: 1.6;
+    }
+
+    .wh-right {
+      background: var(--signal);
+      padding: 3rem 2.5rem;
+      display: flex; flex-direction: column;
+      justify-content: flex-end; gap: 1.5rem;
+    }
+
+    .exp-card {
+      background: var(--bone);
+      border: 2px solid var(--ink);
+      box-shadow: 5px 5px 0 0 var(--ink);
+      padding: 0;
+      overflow: hidden;
+    }
+    .exp-card-header {
+      background: var(--ink);
+      padding: 0.6rem 1.75rem;
+    }
+    .exp-card-header span {
+      font-family: var(--fm);
+      font-size: 0.5rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(242,240,235,0.4);
+    }
+    .exp-card-body {
+      padding: 1.25rem 1.75rem 1.5rem;
+    }
+    .exp-role {
+      font-family: var(--fd); font-weight: 900;
+      font-size: 1.1rem; letter-spacing: -0.02em;
+      text-transform: uppercase; color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .exp-company {
+      font-family: var(--fm);
+      font-size: 0.58rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--signal); margin-bottom: 1rem;
+    }
+    .exp-desc {
+      font-size: 0.82rem; font-weight: 500;
+      line-height: 1.65; color: rgba(17,17,17,0.65);
+    }
+    .exp-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+      margin-top: 1rem;
+    }
+    .exp-tag {
+      font-family: var(--fm);
+      font-size: 0.5rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border: 2px solid var(--ink);
+      background: var(--bone);
+      box-shadow: 2px 2px 0 0 var(--ink);
+      color: var(--ink);
+    }
+
+    /* ── APPROACH ── */
+    .approach-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 3px solid var(--ink);
+      background: var(--ink);
+    }
+    @media (max-width: 768px) { .approach-strip { grid-template-columns: 1fr; } }
+
+    .approach-item {
+      padding: 2.5rem 2rem;
+      border-right: 2px solid rgba(242,240,235,0.1);
+      transition: background 0s;
+    }
+    .approach-item:last-child { border-right: none; }
+    .approach-item:hover { background: rgba(200,57,10,0.15); }
+    .approach-num {
+      font-family: var(--fm);
+      font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--signal); margin-bottom: 1rem;
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid var(--signal);
+    }
+    .approach-title {
+      font-family: var(--fd); font-weight: 900;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      text-transform: uppercase; letter-spacing: -0.02em;
+      line-height: 1.1; color: var(--bone); margin-bottom: 0.75rem;
+    }
+    .approach-body {
+      font-size: 0.8rem; font-weight: 500;
+      line-height: 1.65; color: rgba(242,240,235,0.5);
+    }
+
+    /* ── PROJECT LIST ── */
+    .projects-wrap { background: var(--ink); }
+
+    .projects-label {
+      padding: 1.5rem 2.5rem 0;
+      font-family: var(--fm);
+      font-size: 0.56rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(242,240,235,0.25);
+      border-top: 1px solid rgba(242,240,235,0.08);
+    }
+
+    .project-list { list-style: none; }
+
+    .project-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem 2.5rem;
+      border-top: 1px solid rgba(242,240,235,0.1);
+      cursor: pointer;
+      transition: background 0s;
+      overflow: hidden;
+    }
+    .project-item:hover { background: rgba(242,240,235,0.04); }
+
+    .proj-index {
+      font-family: var(--fm);
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.1em; color: var(--signal);
+      flex-shrink: 0;
+    }
+
+    .proj-body {
+      display: flex; flex-direction: column; gap: 0.55rem;
+      transition: transform 0.15s ease;
+    }
+    .project-item:hover .proj-body { transform: translateX(16px); }
+
+    .proj-name {
+      font-family: var(--fd); font-weight: 900;
+      font-size: clamp(1.4rem, 3.5vw, 2.8rem);
+      text-transform: uppercase; letter-spacing: -0.03em;
+      line-height: 1; color: var(--bone);
+    }
+
+    /* Context row: context text + region badge inline */
+    .proj-meta {
+      display: flex; align-items: center;
+      flex-wrap: wrap; gap: 0.5rem;
+    }
+
+    .proj-context {
+      font-family: var(--fm);
+      font-size: 0.56rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(242,240,235,0.35);
+      line-height: 1.55;
+    }
+
+    /* Region pill — the new addition */
+    .proj-region {
+      font-family: var(--fm);
+      font-size: 0.46rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid rgba(200,57,10,0.6);
+      border-radius: 9999px;
+      color: var(--signal);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Remote flag — muted variant */
+    .proj-region.remote {
+      border-color: rgba(242,240,235,0.2);
+      color: rgba(242,240,235,0.3);
+    }
+
+    .proj-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+    }
+    .proj-tag {
+      font-family: var(--fm);
+      font-size: 0.5rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(242,240,235,0.2);
+      color: rgba(242,240,235,0.5);
+      transition: border-color 0.1s, color 0.1s;
+    }
+    .project-item:hover .proj-tag {
+      border-color: var(--signal);
+      color: var(--signal);
+    }
+
+    /* Community project — slightly different treatment */
+    .project-item.community .proj-name { color: rgba(242,240,235,0.7); }
+    .project-item.community:hover .proj-name { color: var(--bone); }
+
+    .proj-arrow {
+      flex-shrink: 0; opacity: 0;
+      transform: rotate(0deg);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      color: var(--signal);
+    }
+    .project-item:hover .proj-arrow {
+      opacity: 1;
+      transform: rotate(-45deg);
+    }
+    .proj-arrow svg {
+      width: 36px; height: 36px;
+      stroke: currentColor; fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: var(--signal);
+      border-top: 3px solid var(--ink);
+      border-bottom: 3px solid var(--ink);
+      padding: 5rem 2.5rem;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-strip::before {
+      content: 'WORK';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      font-family: var(--fd); font-weight: 900;
+      font-size: 28vw; text-transform: uppercase;
+      letter-spacing: -0.06em;
+      color: rgba(17,17,17,0.06);
+      pointer-events: none; white-space: nowrap; line-height: 1;
+    }
+    .cta-label {
+      font-family: var(--fm);
+      font-size: 0.58rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(17,17,17,0.5);
+      margin-bottom: 1.5rem; position: relative; z-index: 1;
+    }
+    .cta-title {
+      font-family: var(--fd); font-weight: 900;
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      text-transform: uppercase; letter-spacing: -0.04em;
+      line-height: 0.9; color: var(--ink);
+      margin-bottom: 2.5rem; position: relative; z-index: 1;
+    }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: var(--ink); color: var(--bone);
+      font-family: var(--fd); font-weight: 700;
+      font-size: 0.75rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 1rem 2.5rem;
+      border: 2px solid var(--ink);
+      box-shadow: 5px 5px 0 0 rgba(17,17,17,0.4);
+      cursor: pointer; position: relative; z-index: 1;
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+    }
+    .cta-btn:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 0 rgba(17,17,17,0.4); }
+    .cta-btn:active { transform: translate(2px,2px); box-shadow: none; }
+    .cta-btn svg {
+      width: 16px; height: 16px; stroke: currentColor; fill: none;
+      stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .reveal { opacity: 0; transform: translateY(32px); }
+  
+    :root { --bone:#F2F0EB;--ink:#111111;--signal:#C8390A;--muted:#D8D5CF;--fd:'Space Grotesk',sans-serif;--fm:'DM Mono',monospace; }
+    .nav-wrap{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:400;pointer-events:none;opacity:0;width:max-content;}
+    .nav-bar{pointer-events:all;display:flex;align-items:center;height:52px;background:var(--ink);border:2px solid var(--ink);border-radius:9999px;box-shadow:4px 4px 0 0 var(--ink);overflow:hidden;gap:4px;padding:0 6px 0 0;}
+    .nav-logo{display:flex;align-items:center;gap:7px;padding:0 16px 0 14px;height:100%;background:var(--signal);border-right:2px solid var(--ink);font-family:var(--fd);font-weight:900;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bone);cursor:pointer;flex-shrink:0;transition:background 0s,color 0s,transform .08s ease;}
+    .nav-logo:hover{background:var(--bone);color:var(--ink);}
+    .nav-logo:active{transform:translate(1px,1px);}
+    .geo{display:flex;align-items:center;gap:3px;}.g-c{width:7px;height:7px;border-radius:50%;background:currentColor;}.g-s{width:7px;height:7px;background:currentColor;}.g-t{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:7px solid currentColor;}
+    .nav-pills{display:flex;align-items:center;gap:4px;padding-left:2px;}
+    .nav-pill{position:relative;display:inline-flex;align-items:center;justify-content:center;height:38px;padding:0 16px;border-radius:9999px;background:var(--bone);font-family:var(--fd);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);cursor:pointer;overflow:hidden;flex-shrink:0;transition:transform .08s ease;}
+    .nav-pill.active{background:var(--signal);color:var(--bone);}
+    .nav-pill:active{transform:translate(1px,1px);}
+    .pill-circle{position:absolute;left:50%;bottom:0;border-radius:50%;background:var(--ink);pointer-events:none;z-index:1;will-change:transform;}
+    .label-stack{position:relative;display:inline-block;line-height:1;overflow:hidden;padding:2px 0;z-index:2;}
+    .label-default{display:block;will-change:transform;}
+    .label-hover{position:absolute;left:0;top:2px;width:100%;text-align:center;color:var(--bone);will-change:transform,opacity;z-index:3;}
+    .nav-pill.active .label-hover{display:none;}
+    .nav-right{display:flex;align-items:center;gap:2px;margin-left:2px;}
+    .nav-avail{display:flex;align-items:center;gap:5px;padding:0 12px;height:38px;border-radius:9999px;font-family:var(--fm);font-size:.54rem;letter-spacing:.06em;color:rgba(242,240,235,.45);cursor:default;flex-shrink:0;}
+    .nav-avail:hover{background:rgba(242,240,235,.07);}
+    .avail-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:blink 2.6s ease infinite;}
+    @keyframes blink{0%,100%{opacity:1;}50%{opacity:.25;}}
+    .nav-icon{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:9999px;color:rgba(242,240,235,.4);cursor:pointer;flex-shrink:0;transition:background 0s,color 0s,transform .08s ease;}
+    .nav-icon:hover{background:rgba(242,240,235,.1);color:var(--bone);}
+    .nav-icon:active{transform:translate(1px,1px);}
+    .nav-icon svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+    #tip{position:fixed;background:var(--ink);color:var(--bone);font-family:var(--fm);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;padding:5px 9px;border-radius:3px;box-shadow:2px 2px 0 0 var(--signal);white-space:nowrap;pointer-events:none;opacity:0;transform:translateY(-4px);transition:opacity .1s,transform .1s;z-index:9999;}
+    #tip.show{opacity:1;transform:translateY(0);}
+
+
+    .footer{background:var(--ink);border-top:3px solid var(--ink);padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+    .footer-left{font-family:var(--fm);font-size:.54rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,240,235,.28);line-height:1.65;}
+    .footer-left span{color:var(--signal);}
+    .footer-center{font-family:var(--fd);font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:-.02em;color:var(--bone);}
+    .footer-center em{color:var(--signal);font-style:normal;}
+    .footer-right{display:flex;gap:.5rem;}
+    .footer-icon{width:34px;height:34px;border:1.5px solid rgba(242,240,235,.2);display:flex;align-items:center;justify-content:center;color:rgba(242,240,235,.4);cursor:pointer;text-decoration:none;transition:border-color 0s,color 0s,transform .08s ease;}
+    .footer-icon:hover{border-color:var(--signal);color:var(--signal);transform:translate(-1px,-1px);}
+    .footer-icon svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+
+</style>
+</head>
+<body>
+<div class="scroll-prog" id="sp-nav" style="position:fixed;top:0;left:0;height:3px;background:#C8390A;z-index:999;width:0%"></div>
+<!-- ══ NAV ══ -->
+<div class="nav-wrap" id="navWrap">
+  <nav class="nav-bar" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Home">
+      <div class="geo" aria-hidden="true"><div class="g-c"></div><div class="g-s"></div><div class="g-t"></div></div>
+      ZS
+    </a>
+    <div class="nav-pills" id="navPills">
+      <a href="/work" class="nav-pill active" data-tip="Projects + experience"><span class="pill-circle"></span><span class="label-stack"><span class="label-default">Work</span><span class="label-hover" aria-hidden="true">Work</span></span></a>
+      <a href="/journey" class="nav-pill" data-tip="How I got here"><span class="pill-circle"></span><span class="label-stack"><span class="label-default">Journey</span><span class="label-hover" aria-hidden="true">Journey</span></span></a>
+      <a href="/contact" class="nav-pill" data-tip="Good work starts here"><span class="pill-circle"></span><span class="label-stack"><span class="label-default">Contact</span><span class="label-hover" aria-hidden="true">Contact</span></span></a>
+    </div>
+    <div class="nav-right">
+      <div class="nav-avail" data-tip="Open to select projects"><div class="avail-dot"></div>Available</div>
+      <a href="https://linkedin.com/in/zaimsharoon" class="nav-icon" aria-label="LinkedIn" target="_blank" rel="noopener" data-tip="LinkedIn">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
+      </a>
+      <a href="mailto:me@zaimsharoon.com" class="nav-icon" aria-label="Email" data-tip="me@zaimsharoon.com">
+        <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      </a>
+    </div>
+  </nav>
+</div>
+<div id="tip"></div>
+
+<section class="work-section" id="work">
+
+  <!-- HEADER -->
+  <div class="work-header">
+    <div class="wh-left reveal">
+      <div class="wh-coord">[01 / Work] — Experience & Projects</div>
+      <h2 class="wh-title">Work &<br><em>Experience</em></h2>
+      <p class="wh-sub">Brand systems, GTM infrastructure, and outbound engines — built to keep working after I hand them over.</p>
+    </div>
+    <div class="wh-right reveal">
+      <div class="exp-card">
+        <div class="exp-card-header"><span>Current Role</span></div>
+        <div class="exp-card-body">
+        <div class="exp-role">Marketing & Sales Specialist</div>
+        <div class="exp-company">Silk Road Professionals · 2023 – Present · US · UK · Uzbekistan · Tajikistan</div>
+        <p class="exp-desc">
+          Marketing and sales at a 32-engineer software development and staff augmentation firm serving US, UK, and Australian clients. Brand, content, LinkedIn strategy, outbound, and demand generation — built and run solo.
+        </p>
+        <div class="exp-tags">
+          <span class="exp-tag">Brand Strategy</span>
+          <span class="exp-tag">GTM</span>
+          <span class="exp-tag">Outbound</span>
+          <span class="exp-tag">Sales</span>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPROACH -->
+  <div class="approach-strip reveal">
+    <div class="approach-item">
+      <div class="approach-num">01 / Diagnose</div>
+      <div class="approach-title">Diagnose Before Building</div>
+      <p class="approach-body">I won't start until I understand what the real problem is — not what you've named it. Uncomfortable questions early, before the work is half done and hard to reverse.</p>
+    </div>
+    <div class="approach-item">
+      <div class="approach-num">02 / Say It</div>
+      <div class="approach-title">Say The Thing</div>
+      <p class="approach-body">If the ICP is wrong I say so before you run 500 emails into the wrong audience. Not here to make you feel good about a bad plan.</p>
+    </div>
+    <div class="approach-item">
+      <div class="approach-num">03 / Build</div>
+      <div class="approach-title">Build What Runs</div>
+      <p class="approach-body">Every deliverable has an operational layer — the playbook, the sequence, the system — so the work keeps compounding after I hand it over.</p>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="projects-wrap">
+    <div class="projects-label">Selected Projects</div>
+    <ul class="project-list" role="list">
+
+      <li class="project-item" tabindex="0">
+        <span class="proj-index">001</span>
+        <div class="proj-body">
+          <span class="proj-name">English Plus</span>
+          <div class="proj-meta">
+            <span class="proj-context">Brand Identity · Independent</span>
+            <span class="proj-region">Ferghana, Uzbekistan</span>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Brand Identity</span>
+            <span class="proj-tag">Color System</span>
+            <span class="proj-tag">Logo</span>
+            <span class="proj-tag">Brand Kit</span>
+          </div>
+        </div>
+        <div class="proj-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </li>
+
+      <li class="project-item" tabindex="0">
+        <span class="proj-index">002</span>
+        <div class="proj-body">
+          <span class="proj-name">Candle</span>
+          <div class="proj-meta">
+            <span class="proj-context">Brand & Marketing · SRP Product · Ongoing</span>
+            <span class="proj-region">USA</span>
+            <span class="proj-region remote">Remote</span>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Brand Strategy</span>
+            <span class="proj-tag">Positioning</span>
+            <span class="proj-tag">GTM</span>
+          </div>
+        </div>
+        <div class="proj-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </li>
+
+      <li class="project-item" tabindex="0">
+        <span class="proj-index">003</span>
+        <div class="proj-body">
+          <span class="proj-name">Insured Nomads</span>
+          <div class="proj-meta">
+            <span class="proj-context">Associate Marketing Specialist · Dec 2024 – May 2025</span>
+            <span class="proj-region">USA</span>
+            <span class="proj-region remote">Remote</span>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">SEO</span>
+            <span class="proj-tag">Content</span>
+            <span class="proj-tag">Web</span>
+          </div>
+        </div>
+        <div class="proj-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </li>
+
+      <li class="project-item" tabindex="0">
+        <span class="proj-index">004</span>
+        <div class="proj-body">
+          <span class="proj-name">Simon & Sons</span>
+          <div class="proj-meta">
+            <span class="proj-context">Branding & Web · Trading Co · Jun 2024 – Aug 2025</span>
+            <span class="proj-region">Lahore, Pakistan</span>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Branding</span>
+            <span class="proj-tag">Web Design</span>
+          </div>
+        </div>
+        <div class="proj-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </li>
+
+      <li class="project-item community" tabindex="0">
+        <span class="proj-index">005</span>
+        <div class="proj-body">
+          <span class="proj-name">Cloud School</span>
+          <div class="proj-meta">
+            <span class="proj-context">Community Project · Economic Development & Women's Sustainability</span>
+            <span class="proj-region">Australia</span>
+            <span class="proj-region remote">Remote</span>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Community</span>
+            <span class="proj-tag">Economic Dev</span>
+            <span class="proj-tag">NGO</span>
+          </div>
+        </div>
+        <div class="proj-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- CTA — placeholder text, waiting for your pick -->
+  <div class="cta-strip reveal">
+    <div class="cta-label">[Next] — The work starts here</div>
+    <h3 class="cta-title">Every great brand<br>started with<br>one move.</h3>
+    <a href="/contact" class="cta-btn">
+      Let's talk
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</section>
+
+<script>
+(function() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray('.reveal').forEach(el => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 36 },
+      { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' } }
+    );
+  });
+
+  gsap.utils.toArray('.project-item').forEach((item, i) => {
+    gsap.fromTo(item,
+      { opacity: 0, x: -24 },
+      { opacity: 1, x: 0, duration: 0.5, ease: 'power3.out', delay: i * 0.07,
+        scrollTrigger: { trigger: item, start: 'top 90%', toggleActions: 'play none none none' } }
+    );
+  });
+})();
+</script>
+
+<footer class="footer">
+  <div class="footer-left">© 2026 Zaim Sharoon<br><span>Ferghana, Uzbekistan</span> · Built with intent</div>
+  <div class="footer-center">ZS <em>◆</em></div>
+  <div class="footer-right">
+    <a href="https://linkedin.com/in/zaimsharoon" class="footer-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></a>
+    <a href="mailto:me@zaimsharoon.com" class="footer-icon" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 7l10 7 10-7"/></svg></a>
+  </div>
+</footer>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+  /* Nav */
+  (function(){
+    const navWrap = document.getElementById('navWrap');
+    gsap.set(navWrap,{y:-20});
+    gsap.to(navWrap,{opacity:1,y:0,duration:.7,ease:'back.out(1.4)',delay:.2});
+    const pills=document.querySelectorAll('.nav-pill');
+    const tls=[],tweens=[];
+    function setup(pill,i){
+      const circle=pill.querySelector('.pill-circle');
+      const ld=pill.querySelector('.label-default');
+      const lh=pill.querySelector('.label-hover');
+      const r=pill.getBoundingClientRect();
+      const w=r.width||100,h=r.height||38;
+      const R=((w*w)/4+h*h)/(2*h);
+      const D=Math.ceil(2*R)+2;
+      const delta=Math.ceil(R-Math.sqrt(Math.max(0,R*R-(w*w)/4)))+1;
+      circle.style.width=D+'px';circle.style.height=D+'px';circle.style.bottom=-delta+'px';
+      gsap.set(circle,{xPercent:-50,scale:0,transformOrigin:'50% '+(D-delta)+'px'});
+      gsap.set(ld,{y:0});gsap.set(lh,{y:h+12,opacity:0});
+      const tl=gsap.timeline({paused:true});
+      tl.to(circle,{scale:1.25,xPercent:-50,duration:.65,ease:'power3.out',overwrite:'auto'},0);
+      tl.to(ld,{y:-(h+8),duration:.5,ease:'power3.out',overwrite:'auto'},0);
+      tl.to(lh,{y:0,opacity:1,duration:.5,ease:'power3.out',overwrite:'auto'},0);
+      tls[i]=tl;
+    }
+    pills.forEach((p,i)=>setup(p,i));
+    window.addEventListener('resize',()=>{let r;clearTimeout(r);r=setTimeout(()=>pills.forEach((p,i)=>setup(p,i)),150);});
+    pills.forEach((pill,i)=>{
+      pill.addEventListener('mouseenter',()=>{tweens[i]?.kill();tweens[i]=tls[i]?.tweenTo(tls[i].duration(),{duration:.35,ease:'power3.out',overwrite:'auto'});});
+      pill.addEventListener('mouseleave',()=>{tweens[i]?.kill();tweens[i]=tls[i]?.tweenTo(0,{duration:.28,ease:'power3.in',overwrite:'auto'});});
+    });
+    const tip=document.getElementById('tip');
+    function showTip(el,text){tip.textContent=text;tip.classList.add('show');const r=el.getBoundingClientRect(),tw=tip.offsetWidth;let left=r.left+r.width/2-tw/2;left=Math.max(8,Math.min(left,window.innerWidth-tw-8));tip.style.left=left+'px';tip.style.top=(r.bottom+10)+'px';}
+    function hideTip(){tip.classList.remove('show');}
+    document.querySelectorAll('[data-tip]').forEach(el=>{el.addEventListener('mouseenter',()=>showTip(el,el.dataset.tip));el.addEventListener('mouseleave',hideTip);});
+  })();
+
+</script>
+</body>
+</html>

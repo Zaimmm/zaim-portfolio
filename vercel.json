@@ -1,0 +1,9 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "routes": [
+    { "src": "/work",    "dest": "/work.html" },
+    { "src": "/journey", "dest": "/journey.html" },
+    { "src": "/contact", "dest": "/contact.html" }
+  ]
+}

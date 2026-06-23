@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zaim Sharoon — Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root {
+      --bone:   #F2F0EB;
+      --ink:    #111111;
+      --signal: #C8390A;
+      --muted:  #D8D5CF;
+      --fd: 'Space Grotesk', sans-serif;
+      --fm: 'DM Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--fd); background: var(--bone); color: var(--ink); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ::selection { background: var(--ink); color: var(--signal); }
+
+    /* HEADER */
+    .journey-header {
+      background: var(--ink);
+      border-bottom: 3px solid var(--ink);
+      padding: 8rem 2.5rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .journey-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(242,240,235,0.07) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .jh-coord {
+      font-family: var(--fm);
+      font-size: 0.58rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(242,240,235,0.28);
+      margin-bottom: 1.5rem; position: relative; z-index: 1;
+    }
+    .jh-title {
+      font-family: var(--fd); font-weight: 900;
+      font-size: clamp(4rem, 12vw, 11rem);
+      text-transform: uppercase;
+      letter-spacing: -0.04em; line-height: 0.85;
+      color: var(--bone); position: relative; z-index: 1;
+    }
+    .jh-title em {
+      color: transparent;
+      -webkit-text-stroke: 3px var(--signal);
+      font-style: normal;
+    }
+    .jh-sub {
+      font-family: var(--fm);
+      font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(242,240,235,0.4);
+      margin-top: 2rem; max-width: 520px;
+      line-height: 1.65; position: relative; z-index: 1;
+    }
+
+    /* TIMELINE */
+    .timeline-section {
+      background: var(--bone);
+      border-bottom: 3px solid var(--ink);
+      position: relative;
+    }
+    .timeline-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 5rem 2.5rem;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0 2.5rem;
+      position: relative;
+    }
+    @media (max-width: 640px) {
+      .timeline-inner { grid-template-columns: 36px 1fr; gap: 0 1rem; padding: 3rem 1.25rem; }
+    }
+
+    .svg-rail {
+      position: absolute;
+      left: 2.5rem; top: 0; bottom: 0;
+      width: 80px; pointer-events: none; z-index: 2;
+    }
+    @media (max-width: 640px) { .svg-rail { left: 1.25rem; width: 36px; } }
+    .svg-rail svg { width: 100%; height: 100%; overflow: visible; }
+    #journey-line { fill: none; stroke: var(--signal); stroke-width: 3; stroke-linecap: round; }
+    .line-node { fill: var(--signal); stroke: var(--bone); stroke-width: 3; opacity: 0; transition: opacity 0.3s ease; }
+
+    .milestones { grid-column: 2; display: flex; flex-direction: column; gap: 3.5rem; padding-top: 0.5rem; }
+    .milestone { opacity: 0; transform: translateX(24px); }
+
+    .ms-year {
+      font-family: var(--fm);
+      font-size: 0.58rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--signal); margin-bottom: 0.75rem;
+      display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .ms-badge {
+      font-size: 0.44rem; padding: 0.18rem 0.55rem;
+      background: var(--signal); color: var(--bone);
+      border: 1px solid var(--ink); letter-spacing: 0.08em;
+    }
+    .ms-badge.ongoing {
+      background: var(--bone); color: var(--signal);
+      border-color: var(--signal);
+    }
+
+    .ms-card {
+      background: var(--bone);
+      border: 2px solid var(--ink);
+      box-shadow: 5px 5px 0 0 var(--ink);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+    .ms-card:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 0 var(--ink); }
+
+    .ms-card-head {
+      background: var(--signal);
+      border-bottom: 2px solid var(--ink);
+      padding: 0.65rem 1.25rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .ms-card-head.dark { background: var(--ink); }
+
+    .ms-title {
+      font-family: var(--fd); font-weight: 900;
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      text-transform: uppercase; letter-spacing: -0.02em;
+      color: var(--bone);
+    }
+    .ms-location {
+      font-family: var(--fm);
+      font-size: 0.5rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(242,240,235,0.6);
+      flex-shrink: 0; text-align: right;
+    }
+
+    .ms-card-body { padding: 1.25rem 1.25rem 1.4rem; }
+    .ms-body { font-size: 0.85rem; font-weight: 500; line-height: 1.7; color: rgba(17,17,17,0.65); margin-bottom: 1rem; }
+
+    /* Parallel track rows inside a card */
+    .track-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .track {
+      border: 1.5px solid var(--ink);
+      padding: 0.75rem 0.85rem;
+      background: var(--bone);
+      box-shadow: 2px 2px 0 0 var(--ink);
+    }
+    .track-label {
+      font-family: var(--fm);
+      font-size: 0.48rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--signal); margin-bottom: 0.3rem;
+    }
+    .track-name {
+      font-family: var(--fd); font-weight: 700;
+      font-size: 0.82rem; text-transform: uppercase;
+      letter-spacing: -0.01em; color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+    .track-period {
+      font-family: var(--fm);
+      font-size: 0.46rem; color: rgba(17,17,17,0.4);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .track.active-now {
+      border-color: var(--signal);
+      box-shadow: 2px 2px 0 0 var(--signal);
+    }
+    .track.active-now .track-label { color: var(--signal); }
+
+    .ms-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+    .ms-tag {
+      font-family: var(--fm);
+      font-size: 0.5rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border: 2px solid var(--ink);
+      background: var(--bone);
+      box-shadow: 2px 2px 0 0 var(--ink);
+      color: var(--ink);
+    }
+
+    /* NOW BLOCK */
+    .now-block {
+      background: var(--signal);
+      border-top: 3px solid var(--ink);
+      border-bottom: 3px solid var(--ink);
+      padding: 4rem 2.5rem;
+      position: relative; overflow: hidden;
+    }
+    .now-block::before {
+      content: 'NOW';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      font-family: var(--fd); font-weight: 900;
+      font-size: 22vw; text-transform: uppercase;
+      letter-spacing: -0.06em;
+      color: rgba(17,17,17,0.07);
+      pointer-events: none; white-space: nowrap; line-height: 1;
+    }
+    .now-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; position: relative; z-index: 1;
+    }
+    @media (max-width: 768px) { .now-inner { grid-template-columns: 1fr; } }
+
+    .now-coord {
+      font-family: var(--fm);
+      font-size: 0.58rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(17,17,17,0.45); margin-bottom: 1rem;
+    }
+    .now-title {
+      font-family: var(--fd); font-weight: 900;
+      font-size: clamp(2rem, 5vw, 4rem);
+      text-transform: uppercase;
+      letter-spacing: -0.04em; line-height: 0.88;
+      color: var(--ink); margin-bottom: 1.5rem;
+    }
+    .now-body { font-size: 0.9rem; font-weight: 500; line-height: 1.7; color: rgba(17,17,17,0.7); }
+
+    .now-right { display: flex; flex-direction: column; gap: 0.75rem; justify-content: center; }
+    .now-card {
+      background: var(--ink); border: 2px solid var(--ink);
+      box-shadow: 4px 4px 0 0 rgba(17,17,17,0.3);
+      padding: 1rem 1.25rem;
+    }
+    .now-card.open {
+      background: var(--bone); border-color: var(--ink);
+      box-shadow: 4px 4px 0 0 var(--ink);
+    }
+    .now-card-label {
+      font-family: var(--fm);
+      font-size: 0.52rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--signal); margin-bottom: 0.35rem;
+    }
+    .now-card.open .now-card-label { color: var(--signal); }
+    .now-card-val {
+      font-family: var(--fd); font-weight: 700;
+      font-size: 0.88rem; color: var(--bone); line-height: 1.4;
+    }
+    .now-card.open .now-card-val { color: var(--ink); font-weight: 900; }
+
+    /* ROLES */
+    .roles-strip {
+      background: var(--ink);
+      border-top: 3px solid var(--ink);
+      padding: 2.5rem 2.5rem;
+    }
+    .roles-label {
+      font-family: var(--fm);
+      font-size: 0.56rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(242,240,235,0.28); margin-bottom: 1.25rem;
+    }
+    .roles-list { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .role-tag {
+      font-family: var(--fd); font-weight: 700;
+      font-size: clamp(0.8rem, 2vw, 1.1rem);
+      text-transform: uppercase; letter-spacing: -0.01em;
+      padding: 0.6rem 1.2rem;
+      border: 2px solid var(--bone);
+      color: var(--bone);
+      box-shadow: 3px 3px 0 0 var(--signal);
+      transition: transform 0.08s ease, background 0s, color 0s;
+      cursor: default;
+    }
+    .role-tag:hover { background: var(--signal); border-color: var(--signal); transform: translate(-1px,-1px); }
+    .role-tag.active { background: var(--signal); border-color: var(--signal); }
+
+    /* CTA */
+    .journey-cta {
+      background: var(--bone);
+      border-bottom: 3px solid var(--ink);
+      border-top: 3px solid var(--ink);
+      padding: 4rem 2.5rem;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    }
+    .jcta-left {
+      display: flex; align-items: center; gap: 1.75rem; flex-wrap: wrap;
+    }
+    .jcta-coins {
+      flex-shrink: 0;
+      animation: coin-float 3s ease-in-out infinite;
+    }
+    @keyframes coin-float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+    .jcta-text {
+      font-family: var(--fd); font-weight: 900;
+      font-size: clamp(1.8rem, 4vw, 3.5rem);
+      text-transform: uppercase;
+      letter-spacing: -0.03em; line-height: 0.9; color: var(--ink);
+    }
+    .jcta-text em { color: var(--signal); font-style: normal; }
+    .jcta-btn {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: var(--signal); color: var(--bone);
+      font-family: var(--fd); font-weight: 700;
+      font-size: 0.75rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 1rem 2rem;
+      border: 2px solid var(--ink);
+      box-shadow: 5px 5px 0 0 var(--ink);
+      cursor: pointer; white-space: nowrap;
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+      flex-shrink: 0;
+    }
+    .jcta-btn:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 0 var(--ink); }
+    .jcta-btn:active { transform: translate(2px,2px); box-shadow: none; }
+    .jcta-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  
+    :root { --bone:#F2F0EB;--ink:#111111;--signal:#C8390A;--muted:#D8D5CF;--fd:'Space Grotesk',sans-serif;--fm:'DM Mono',monospace; }
+    .nav-wrap{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:400;pointer-events:none;opacity:0;width:max-content;}
+    .nav-bar{pointer-events:all;display:flex;align-items:center;height:52px;background:var(--ink);border:2px solid var(--ink);border-radius:9999px;box-shadow:4px 4px 0 0 var(--ink);overflow:hidden;gap:4px;padding:0 6px 0 0;}
+    .nav-logo{display:flex;align-items:center;gap:7px;padding:0 16px 0 14px;height:100%;background:var(--signal);border-right:2px solid var(--ink);font-family:var(--fd);font-weight:900;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bone);cursor:pointer;flex-shrink:0;transition:background 0s,color 0s,transform .08s ease;}
+    .nav-logo:hover{background:var(--bone);color:var(--ink);}
+    .nav-logo:active{transform:translate(1px,1px);}
+    .geo{display:flex;align-items:center;gap:3px;}.g-c{width:7px;height:7px;border-radius:50%;background:currentColor;}.g-s{width:7px;height:7px;background:currentColor;}.g-t{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:7px solid currentColor;}
+    .nav-pills{display:flex;align-items:center;gap:4px;padding-left:2px;}
+    .nav-pill{position:relative;display:inline-flex;align-items:center;justify-content:center;height:38px;padding:0 16px;border-radius:9999px;background:var(--bone);font-family:var(--fd);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);cursor:pointer;overflow:hidden;flex-shrink:0;transition:transform .08s ease;}
+    .nav-pill.active{background:var(--signal);color:var(--bone);}
+    .nav-pill:active{transform:translate(1px,1px);}
+    .pill-circle{position:absolute;left:50%;bottom:0;border-radius:50%;background:var(--ink);pointer-events:none;z-index:1;will-change:transform;}
+    .label-stack{position:relative;display:inline-block;line-height:1;overflow:hidden;padding:2px 0;z-index:2;}
+    .label-default{display:block;will-change:transform;}
+    .label-hover{position:absolute;left:0;top:2px;width:100%;text-align:center;color:var(--bone);will-change:transform,opacity;z-index:3;}
+    .nav-pill.active .label-hover{display:none;}
+    .nav-right{display:flex;align-items:center;gap:2px;margin-left:2px;}
+    .nav-avail{display:flex;align-items:center;gap:5px;padding:0 12px;height:38px;border-radius:9999px;font-family:var(--fm);font-size:.54rem;letter-spacing:.06em;color:rgba(242,240,235,.45);cursor:default;flex-shrink:0;}
+    .nav-avail:hover{background:rgba(242,240,235,.07);}
+    .avail-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:blink 2.6s ease infinite;}
+    @keyframes blink{0%,100%{opacity:1;}50%{opacity:.25;}}
+    .nav-icon{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:9999px;color:rgba(242,240,235,.4);cursor:pointer;flex-shrink:0;transition:background 0s,color 0s,transform .08s ease;}
+    .nav-icon:hover{background:rgba(242,240,235,.1);color:var(--bone);}
+    .nav-icon:active{transform:translate(1px,1px);}
+    .nav-icon svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+    #tip{position:fixed;background:var(--ink);color:var(--bone);font-family:var(--fm);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;padding:5px 9px;border-radius:3px;box-shadow:2px 2px 0 0 var(--signal);white-space:nowrap;pointer-events:none;opacity:0;transform:translateY(-4px);transition:opacity .1s,transform .1s;z-index:9999;}
+    #tip.show{opacity:1;transform:translateY(0);}
+
+
+    .footer{background:var(--ink);border-top:3px solid var(--ink);padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+    .footer-left{font-family:var(--fm);font-size:.54rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,240,235,.28);line-height:1.65;}
+    .footer-left span{color:var(--signal);}
+    .footer-center{font-family:var(--fd);font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:-.02em;color:var(--bone);}
+    .footer-center em{color:var(--signal);font-style:normal;}
+    .footer-right{display:flex;gap:.5rem;}
+    .footer-icon{width:34px;height:34px;border:1.5px solid rgba(242,240,235,.2);display:flex;align-items:center;justify-content:center;color:rgba(242,240,235,.4);cursor:pointer;text-decoration:none;transition:border-color 0s,color 0s,transform .08s ease;}
+    .footer-icon:hover{border-color:var(--signal);color:var(--signal);transform:translate(-1px,-1px);}
+    .footer-icon svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+
+</style>
+</head>
+<body>
+<div class="scroll-prog" id="sp-nav" style="position:fixed;top:0;left:0;height:3px;background:#C8390A;z-index:999;width:0%"></div>
+<!-- ══ NAV ══ -->
+<div class="nav-wrap" id="navWrap">
+  <nav class="nav-bar" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="Home">
+      <div class="geo" aria-hidden="true"><div class="g-c"></div><div class="g-s"></div><div class="g-t"></div></div>
+      ZS
+    </a>
+    <div class="nav-pills" id="navPills">
+      <a href="/work" class="nav-pill" data-tip="Projects + experience"><span class="pill-circle"></span><span class="label-stack"><span class="label-default">Work</span><span class="label-hover" aria-hidden="true">Work</span></span></a>
+      <a href="/journey" class="nav-pill active" data-tip="How I got here"><span class="pill-circle"></span><span class="label-stack"><span class="label-default">Journey</span><span class="label-hover" aria-hidden="true">Journey</span></span></a>
+      <a href="/contact" class="nav-pill" data-tip="Good work starts here"><span class="pill-circle"></span><span class="label-stack"><span class="label-default">Contact</span><span class="label-hover" aria-hidden="true">Contact</span></span></a>
+    </div>
+    <div class="nav-right">
+      <div class="nav-avail" data-tip="Open to select projects"><div class="avail-dot"></div>Available</div>
+      <a href="https://linkedin.com/in/zaimsharoon" class="nav-icon" aria-label="LinkedIn" target="_blank" rel="noopener" data-tip="LinkedIn">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
+      </a>
+      <a href="mailto:me@zaimsharoon.com" class="nav-icon" aria-label="Email" data-tip="me@zaimsharoon.com">
+        <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      </a>
+    </div>
+  </nav>
+</div>
+<div id="tip"></div>
+
+<section class="journey-header">
+  <div class="jh-coord">[02 / Journey] — How I got here</div>
+  <h1 class="jh-title">The<br><em>Journey</em></h1>
+  <p class="jh-sub">
+    Manawala to Lahore. Lahore to Ferghana. And into markets no one
+    from either city was supposed to be in. Here's the order it happened.
+  </p>
+</section>
+
+<section class="timeline-section" id="timeline">
+  <div class="timeline-inner">
+
+    <div class="svg-rail" id="svgRail" aria-hidden="true">
+      <svg id="railSvg" preserveAspectRatio="none" viewBox="0 0 80 1000">
+        <path id="journey-line" d="M40,0 L40,1000"/>
+        <circle class="line-node" cx="40" cy="50"  r="8"/>
+        <circle class="line-node" cx="40" cy="220" r="8"/>
+        <circle class="line-node" cx="40" cy="430" r="8"/>
+        <circle class="line-node" cx="40" cy="620" r="8"/>
+        <circle class="line-node" cx="40" cy="780" r="8"/>
+        <circle class="line-node" cx="40" cy="940" r="8"/>
+      </svg>
+    </div>
+
+    <div class="milestones" id="milestones">
+
+      <!-- 1 -->
+      <div class="milestone">
+        <div class="ms-year">2005 — Roots</div>
+        <div class="ms-card">
+          <div class="ms-card-head dark">
+            <span class="ms-title">Manawala → Lahore</span>
+            <span class="ms-location">Punjab, Pakistan</span>
+          </div>
+          <div class="ms-card-body">
+            <p class="ms-body">
+              Born and raised in Manawala, Punjab. Moved to Lahore in 2005 —
+              one of the most competitive cities in Pakistan. Early on, learned
+              to operate in environments where the ground is never flat
+              and you figure things out fast or you don't.
+            </p>
+            <div class="ms-tags">
+              <span class="ms-tag">Manawala, Punjab</span>
+              <span class="ms-tag">Lahore</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 — BBA + Cloud School overlapping -->
+      <div class="milestone">
+        <div class="ms-year">
+          2021 – 2023
+          <span class="ms-badge">2 tracks</span>
+        </div>
+        <div class="ms-card">
+          <div class="ms-card-head">
+            <span class="ms-title">Degree + First Work</span>
+            <span class="ms-location">Lahore · Australia Remote</span>
+          </div>
+          <div class="ms-card-body">
+            <p class="ms-body">
+              Started the BBA in Marketing & Sales in 2021. While finishing the degree,
+              the first real work was already running — Cloud School Australia, a community
+              project on economic development and women's sustainability. The classroom
+              confirmed theory. The work confirmed what actually mattered.
+            </p>
+            <div class="track-row">
+              <div class="track">
+                <div class="track-label">Education</div>
+                <div class="track-name">BBA — Marketing & Sales</div>
+                <div class="track-period">2021 – 2025 · Lahore</div>
+              </div>
+              <div class="track">
+                <div class="track-label">First work — Community</div>
+                <div class="track-name">Cloud School Australia</div>
+                <div class="track-period">May 2022 – Nov 2023 · Remote</div>
+              </div>
+            </div>
+            <div class="ms-tags">
+              <span class="ms-tag">BBA</span>
+              <span class="ms-tag">Community Dev</span>
+              <span class="ms-tag">Women's Sustainability</span>
+              <span class="ms-tag">NGO</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 — Simon & Sons standalone -->
+      <div class="milestone">
+        <div class="ms-year">Jun 2024 – Aug 2024</div>
+        <div class="ms-card">
+          <div class="ms-card-head dark">
+            <span class="ms-title">Simon & Sons</span>
+            <span class="ms-location">Lahore, Pakistan</span>
+          </div>
+          <div class="ms-card-body">
+            <p class="ms-body">
+              Branding and web design for a trading company in Lahore.
+              On-ground project — built the visual identity and website
+              from scratch. First complete brand-plus-web delivery
+              for a local business client.
+            </p>
+            <div class="ms-tags">
+              <span class="ms-tag">Branding</span>
+              <span class="ms-tag">Web Design</span>
+              <span class="ms-tag">On-ground</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 — Insured Nomads -->
+      <div class="milestone">
+        <div class="ms-year">Dec 2024 – May 2025</div>
+        <div class="ms-card">
+          <div class="ms-card-head">
+            <span class="ms-title">Insured Nomads</span>
+            <span class="ms-location">USA · Remote</span>
+          </div>
+          <div class="ms-card-body">
+            <p class="ms-body">
+              Associate Marketing Specialist for a US-based insurance and travel brand.
+              Contributed to website design, ran SEO, wrote blogs, created Instagram
+              and LinkedIn content. First time working inside a US marketing operation
+              at this level — remote, independent, and fully accountable for outputs.
+            </p>
+            <div class="ms-tags">
+              <span class="ms-tag">SEO</span>
+              <span class="ms-tag">Content</span>
+              <span class="ms-tag">Web</span>
+              <span class="ms-tag">Instagram</span>
+              <span class="ms-tag">LinkedIn</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 — SRP + Candle + English Plus overlapping -->
+      <div class="milestone">
+        <div class="ms-year">
+          Aug 2025 – Present
+          <span class="ms-badge ongoing">3 active</span>
+        </div>
+        <div class="ms-card">
+          <div class="ms-card-head">
+            <span class="ms-title">SRP · Candle · English Plus</span>
+            <span class="ms-location">US · UK · UZB · Tajikistan</span>
+          </div>
+          <div class="ms-card-body">
+            <p class="ms-body">
+              Three things running at the same time — each a separate entity,
+              each demanding full attention. SRP as the main role.
+              Candle as an ongoing brand and marketing engagement within SRP's product line.
+              English Plus as an independent brand project, separate business entity.
+            </p>
+            <div class="track-row">
+              <div class="track active-now">
+                <div class="track-label">Main role · Ongoing</div>
+                <div class="track-name">Silk Road Professionals</div>
+                <div class="track-period">Aug 2025 – Present · International</div>
+              </div>
+              <div class="track active-now">
+                <div class="track-label">Brand & Marketing · Ongoing</div>
+                <div class="track-name">Candle</div>
+                <div class="track-period">Mar 2026 – Present · USA · SRP Product</div>
+              </div>
+              <div class="track">
+                <div class="track-label">Independent · Brand</div>
+                <div class="track-name">English Plus</div>
+                <div class="track-period">Apr 2026 – May 2026 · Ferghana, UZB</div>
+              </div>
+            </div>
+            <div class="ms-tags">
+              <span class="ms-tag">GTM</span>
+              <span class="ms-tag">Outbound</span>
+              <span class="ms-tag">Brand Strategy</span>
+              <span class="ms-tag">Positioning</span>
+              <span class="ms-tag">Sales</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 — Now -->
+      <div class="milestone">
+        <div class="ms-year">
+          Now — June 2026
+          <span class="ms-badge ongoing">Active</span>
+        </div>
+        <div class="ms-card">
+          <div class="ms-card-head dark">
+            <span class="ms-title">Ferghana — Building</span>
+            <span class="ms-location">Uzbekistan</span>
+          </div>
+          <div class="ms-card-body">
+            <p class="ms-body">
+              Based in Ferghana, Uzbekistan. Practicing branding, sales,
+              and marketing every day — across SRP and independent work.
+              Learning agentic coding as a force multiplier: the operators who
+              can build their own GTM tooling, automate their own pipelines,
+              and ship their own systems will compound faster than anyone
+              waiting for a dev to do it. That's the bet. That's the lane.
+            </p>
+            <div class="ms-tags">
+              <span class="ms-tag">Independent Practice</span>
+              <span class="ms-tag">Agentic Coding</span>
+              <span class="ms-tag">AI-Native GTM</span>
+              <span class="ms-tag">Compounding</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NOW BLOCK -->
+<section class="now-block">
+  <div class="now-inner">
+    <div>
+      <div class="now-coord">[Currently] — Ferghana, Uzbekistan</div>
+      <h2 class="now-title">Where I<br>Am Now</h2>
+      <p class="now-body">
+        Based in Ferghana, Uzbekistan. Running SRP, Candle, and independent
+        brand work simultaneously. Learning agentic coding — not as a side hobby,
+        but because the intersection of GTM strategy and AI-native tooling
+        is where the next serious operators will come from. Open to the right roles.
+        The work is getting sharper every month.
+      </p>
+    </div>
+    <div class="now-right">
+      <div class="now-card open">
+        <div class="now-card-label">Availability</div>
+        <div class="now-card-val">Yes — open to the right work</div>
+      </div>
+      <div class="now-card">
+        <div class="now-card-label">Based</div>
+        <div class="now-card-val">Ferghana, Uzbekistan</div>
+      </div>
+      <div class="now-card">
+        <div class="now-card-label">Active work</div>
+        <div class="now-card-val">SRP · Candle · Independent practice</div>
+      </div>
+      <div class="now-card">
+        <div class="now-card-label">Skill multiplier</div>
+        <div class="now-card-val">Agentic coding — AI-native GTM tooling</div>
+      </div>
+      <div class="now-card">
+        <div class="now-card-label">The edge</div>
+        <div class="now-card-val">Build your own tools. Compound faster. That's the bet.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLES -->
+<div class="roles-strip">
+  <div class="roles-label">Open to roles in</div>
+  <div class="roles-list">
+    <span class="role-tag active">GTM</span>
+    <span class="role-tag">Sales</span>
+    <span class="role-tag">Product Marketing</span>
+    <span class="role-tag">Marketing Manager</span>
+    <span class="role-tag">Sales Manager</span>
+    <span class="role-tag">Product Management</span>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="journey-cta">
+  <div class="jcta-left">
+    <div class="jcta-coins" aria-hidden="true">
+      <svg width="64" height="72" viewBox="0 0 64 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Bottom coin -->
+        <ellipse cx="32" cy="52" rx="28" ry="10" fill="#C8390A" stroke="#111111" stroke-width="2.5"/>
+        <ellipse cx="32" cy="44" rx="28" ry="10" fill="#C8390A" stroke="#111111" stroke-width="2.5"/>
+        <ellipse cx="32" cy="44" rx="28" ry="10" fill="#D4440C" stroke="#111111" stroke-width="2.5"/>
+        <!-- coin edge side -->
+        <rect x="4" y="44" width="56" height="8" fill="#A02A06" stroke="none"/>
+        <!-- Top coin -->
+        <ellipse cx="32" cy="28" rx="28" ry="10" fill="#C8390A" stroke="#111111" stroke-width="2.5"/>
+        <ellipse cx="32" cy="20" rx="28" ry="10" fill="#C8390A" stroke="#111111" stroke-width="2.5"/>
+        <ellipse cx="32" cy="20" rx="28" ry="10" fill="#D4440C" stroke="#111111" stroke-width="2.5"/>
+        <!-- coin edge side top -->
+        <rect x="4" y="20" width="56" height="8" fill="#A02A06" stroke="none"/>
+        <!-- Top face shine -->
+        <ellipse cx="32" cy="20" rx="28" ry="10" fill="none" stroke="#111111" stroke-width="2.5"/>
+        <ellipse cx="28" cy="19" rx="10" ry="3.5" fill="rgba(255,255,255,0.12)" stroke="none"/>
+        <!-- ¢ symbol top coin -->
+        <text x="32" y="24" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="900" font-size="11" fill="#111111">¢</text>
+        <!-- ¢ symbol bottom coin -->
+        <text x="32" y="48" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="900" font-size="11" fill="#111111">¢</text>
+      </svg>
+    </div>
+    <div class="jcta-text">
+      Let's talk on how<br>I can contribute<br>my <em>two cents.</em>
+    </div>
+  </div>
+  <a href="/contact" class="jcta-btn">
+    Start the conversation
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+
+<script>
+(function() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const line = document.getElementById('journey-line');
+  const timelineSection = document.getElementById('timeline');
+
+  function sizeRail() {
+    const h = timelineSection.offsetHeight;
+    const svg = document.getElementById('railSvg');
+    const nodes = svg.querySelectorAll('.line-node');
+    svg.setAttribute('viewBox', '0 0 80 ' + h);
+    line.setAttribute('d', 'M40,20 L40,' + (h - 20));
+    nodes.forEach((n, i) => {
+      n.setAttribute('cy', 20 + ((h - 40) * i / (nodes.length - 1)));
+    });
+  }
+
+  function initLine() {
+    sizeRail();
+    const len = line.getTotalLength();
+    line.style.strokeDasharray  = len;
+    line.style.strokeDashoffset = len;
+    const nodes = document.querySelectorAll('.line-node');
+    ScrollTrigger.create({
+      trigger: timelineSection,
+      start: 'top 80%', end: 'bottom 20%', scrub: 1,
+      onUpdate: self => {
+        line.style.strokeDashoffset = len * (1 - self.progress);
+        nodes.forEach((n, i) => {
+          n.style.opacity = self.progress >= i / nodes.length ? '1' : '0';
+        });
+      }
+    });
+  }
+
+  document.fonts ? document.fonts.ready.then(initLine) : initLine();
+  window.addEventListener('resize', () => { sizeRail(); ScrollTrigger.refresh(); });
+
+  document.querySelectorAll('.milestone').forEach(ms => {
+    gsap.to(ms, {
+      opacity: 1, x: 0, duration: 0.55, ease: 'power3.out',
+      scrollTrigger: { trigger: ms, start: 'top 85%', toggleActions: 'play none none none' }
+    });
+  });
+
+  gsap.fromTo('.now-inner > *',
+    { opacity: 0, y: 28 },
+    { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out', stagger: 0.12,
+      scrollTrigger: { trigger: '.now-block', start: 'top 80%', toggleActions: 'play none none none' } }
+  );
+  gsap.fromTo('.now-card',
+    { opacity: 0, x: 20 },
+    { opacity: 1, x: 0, duration: 0.4, ease: 'power2.out', stagger: 0.07,
+      scrollTrigger: { trigger: '.now-right', start: 'top 85%', toggleActions: 'play none none none' } }
+  );
+  gsap.fromTo('.role-tag',
+    { opacity: 0, y: 16 },
+    { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out', stagger: 0.06,
+      scrollTrigger: { trigger: '.roles-strip', start: 'top 90%', toggleActions: 'play none none none' } }
+  );
+})();
+</script>
+
+<footer class="footer">
+  <div class="footer-left">© 2026 Zaim Sharoon<br><span>Ferghana, Uzbekistan</span> · Built with intent</div>
+  <div class="footer-center">ZS <em>◆</em></div>
+  <div class="footer-right">
+    <a href="https://linkedin.com/in/zaimsharoon" class="footer-icon" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></a>
+    <a href="mailto:me@zaimsharoon.com" class="footer-icon" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 7l10 7 10-7"/></svg></a>
+  </div>
+</footer>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+  /* Nav */
+  (function(){
+    const navWrap = document.getElementById('navWrap');
+    gsap.set(navWrap,{y:-20});
+    gsap.to(navWrap,{opacity:1,y:0,duration:.7,ease:'back.out(1.4)',delay:.2});
+    const pills=document.querySelectorAll('.nav-pill');
+    const tls=[],tweens=[];
+    function setup(pill,i){
+      const circle=pill.querySelector('.pill-circle');
+      const ld=pill.querySelector('.label-default');
+      const lh=pill.querySelector('.label-hover');
+      const r=pill.getBoundingClientRect();
+      const w=r.width||100,h=r.height||38;
+      const R=((w*w)/4+h*h)/(2*h);
+      const D=Math.ceil(2*R)+2;
+      const delta=Math.ceil(R-Math.sqrt(Math.max(0,R*R-(w*w)/4)))+1;
+      circle.style.width=D+'px';circle.style.height=D+'px';circle.style.bottom=-delta+'px';
+      gsap.set(circle,{xPercent:-50,scale:0,transformOrigin:'50% '+(D-delta)+'px'});
+      gsap.set(ld,{y:0});gsap.set(lh,{y:h+12,opacity:0});
+      const tl=gsap.timeline({paused:true});
+      tl.to(circle,{scale:1.25,xPercent:-50,duration:.65,ease:'power3.out',overwrite:'auto'},0);
+      tl.to(ld,{y:-(h+8),duration:.5,ease:'power3.out',overwrite:'auto'},0);
+      tl.to(lh,{y:0,opacity:1,duration:.5,ease:'power3.out',overwrite:'auto'},0);
+      tls[i]=tl;
+    }
+    pills.forEach((p,i)=>setup(p,i));
+    window.addEventListener('resize',()=>{let r;clearTimeout(r);r=setTimeout(()=>pills.forEach((p,i)=>setup(p,i)),150);});
+    pills.forEach((pill,i)=>{
+      pill.addEventListener('mouseenter',()=>{tweens[i]?.kill();tweens[i]=tls[i]?.tweenTo(tls[i].duration(),{duration:.35,ease:'power3.out',overwrite:'auto'});});
+      pill.addEventListener('mouseleave',()=>{tweens[i]?.kill();tweens[i]=tls[i]?.tweenTo(0,{duration:.28,ease:'power3.in',overwrite:'auto'});});
+    });
+    const tip=document.getElementById('tip');
+    function showTip(el,text){tip.textContent=text;tip.classList.add('show');const r=el.getBoundingClientRect(),tw=tip.offsetWidth;let left=r.left+r.width/2-tw/2;left=Math.max(8,Math.min(left,window.innerWidth-tw-8));tip.style.left=left+'px';tip.style.top=(r.bottom+10)+'px';}
+    function hideTip(){tip.classList.remove('show');}
+    document.querySelectorAll('[data-tip]').forEach(el=>{el.addEventListener('mouseenter',()=>showTip(el,el.dataset.tip));el.addEventListener('mouseleave',hideTip);});
+  })();
+
+</script>
+</body>
+</html>
