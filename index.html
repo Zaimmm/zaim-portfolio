@@ -3,15 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Zaim Sharoon is a Brand & Growth Strategist building positioning, websites, content, and growth systems for software teams and founder-led companies.">
-  <meta name="theme-color" content="#123A5F">
-  <title>Zaim Sharoon — Brand & Growth Strategist</title>
+  <meta name="description" content="Zaim Sharoon is a Brand & Growth Strategist working across positioning, brand systems, content, websites, and growth strategy.">
+  <meta name="theme-color" content="#08090B">
+  <title>Zaim Sharoon | Brand &amp; Growth Strategist</title>
   <link rel="canonical" href="https://zaimsharoon.com/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <script src="/site.js" defer></script>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.26/dist/lenis.css">
+  <script>document.documentElement.classList.add('has-js')</script>
+  <noscript><style>[data-reveal],[data-hero-reveal]{opacity:1!important;transform:none!important}.intro-loader{display:none!important}</style></noscript>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js" defer></script>
+  <script src="ambient.js" defer></script>
+  <script src="site.js" defer></script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -23,204 +30,167 @@
     }
   </script>
 </head>
-<body>
+<body class="home-page">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <nav class="nav" aria-label="Primary navigation">
-      <a class="wordmark" href="/" aria-label="Zaim Sharoon, home">
-        <span class="wordmark-mark" aria-hidden="true"></span>
-        <span>Zaim Sharoon</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Toggle navigation" data-menu-toggle><span></span></button>
-      <div class="nav-links" id="site-menu" data-menu>
-        <a class="nav-link" href="/" aria-current="page">Home</a>
-        <a class="nav-link" href="/work">Work</a>
-        <a class="nav-link" href="/journey">Journey</a>
-        <a class="nav-link" href="/contact">Contact</a>
-      </div>
-      <a class="nav-cta" href="mailto:me@zaimsharoon.com">Start a conversation</a>
-    </nav>
+  <canvas class="ambient-canvas" data-ambient-canvas aria-hidden="true"></canvas>
+  <div class="ambient-shade" aria-hidden="true"></div>
+
+  <div class="intro-loader" data-loader role="status" aria-label="Opening portfolio">
+    <p class="intro-loader__greeting" data-loader-greeting>Hello</p>
+    <span class="intro-loader__name">Zaim Sharoon</span>
+    <span class="intro-loader__count" data-loader-count>000</span>
+  </div>
+
+  <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
+
+  <header class="site-header" data-site-header>
+    <a class="wordmark" href="index.html" aria-label="Zaim Sharoon, home">Zaim Sharoon</a>
+    <span class="header-role">Brand &amp; Growth Strategist</span>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
+      <span>Menu</span><i aria-hidden="true"></i>
+    </button>
   </header>
 
+  <div class="menu-overlay" id="site-menu" role="dialog" aria-modal="true" aria-label="Site navigation" aria-hidden="true" data-menu>
+    <div class="menu-curtain" data-menu-scrim aria-hidden="true">
+      <i class="menu-curtain__band"></i><i class="menu-curtain__band"></i><i class="menu-curtain__band"></i><i class="menu-curtain__band"></i>
+    </div>
+    <div class="menu-panel">
+      <div class="menu-panel__top">
+        <a class="wordmark" href="index.html">Zaim Sharoon</a>
+        <button class="menu-close" type="button" data-menu-close>Close</button>
+      </div>
+      <nav class="menu-nav" aria-label="Primary navigation">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="work.html">Work</a>
+        <a href="journey.html">Journey</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="menu-panel__foot">
+        <span>Ferghana, Uzbekistan</span>
+        <a href="mailto:me@zaimsharoon.com">me@zaimsharoon.com</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="route-transition" data-route-transition aria-hidden="true">
+    <i class="route-transition__band"></i><i class="route-transition__band"></i><i class="route-transition__band"></i><i class="route-transition__band"></i>
+  </div>
+
   <main id="main">
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="shell hero-frame glass-panel">
+        <div class="hero-copy">
+          <p class="hero-role" data-hero-reveal>Brand &amp; Growth Strategist</p>
+          <h1 id="hero-title" data-hero-reveal><span>Zaim</span><span>Sharoon</span></h1>
+          <p class="hero-summary" data-hero-reveal>I work across positioning, brand systems, content, websites, and growth strategy for software and founder-led teams.</p>
+          <div class="hero-actions" data-hero-reveal>
+            <a class="button button--primary" href="#work">View work <span aria-hidden="true">↓</span></a>
+            <a class="button button--glass" href="contact.html">Contact <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-scope" data-hero-reveal aria-label="Areas of work">
+            <span>Brand strategy</span><span>Content systems</span><span>Digital direction</span><span>Growth strategy</span>
+          </div>
+        </div>
+
+        <figure class="hero-portrait" data-hero-reveal>
+          <img src="assets/zaim-portrait.webp" width="873" height="873" alt="Portrait of Zaim Sharoon" fetchpriority="high">
+          <figcaption class="portrait-meta">
+            <span>Ferghana, Uzbekistan</span>
+            <a href="journey.html">Read the journey ↗</a>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="work" aria-labelledby="work-title">
       <div class="shell">
-        <div class="hero-grid">
-          <div>
-            <p class="eyebrow">Zaim Sharoon · Brand & Growth Strategist</p>
-            <h1>
-              Find the
-              <span class="teal-word">signal.</span>
-              <span class="indent">Build the system.</span>
-            </h1>
+        <header class="section-heading" data-reveal>
+          <h2 id="work-title">Work</h2>
+          <div class="section-heading__side">
+            <p>Current roles, collaborations, and earlier work across software, education, and community projects.</p>
           </div>
+        </header>
 
-          <div class="hero-intro reveal">
-            <p class="hero-role">Strategy that reaches the work.</p>
-            <p class="hero-copy">I turn fuzzy business problems into clear positioning, useful websites, content, and growth systems for software teams and founder-led companies.</p>
-            <div class="hero-actions">
-              <a class="button" href="/work">See selected work</a>
-              <a class="button secondary" href="/journey">Meet the person</a>
-            </div>
-          </div>
+        <div class="work-bento" aria-label="Portfolio work">
+          <article class="work-card work-card--srp" data-reveal data-spotlight>
+            <div class="work-card__top"><h3>Silk Road Professionals</h3><span class="work-card__index">01</span></div>
+            <p class="work-card__role">Work experience · Brand, content, and growth · 2025 to now</p>
+            <p class="work-card__copy">I handle brand, content, and growth for a software team serving English-speaking markets from Ferghana.</p>
+            <span class="work-card__signal" aria-hidden="true"></span>
+          </article>
+
+          <article class="work-card work-card--candle" data-reveal data-spotlight>
+            <div class="work-card__top"><h3>Candle</h3><span class="work-card__index">02</span></div>
+            <p class="work-card__role">Brand system and website direction · 2026 to now</p>
+            <p class="work-card__copy">Brand architecture, visual direction, website guidance, and practical handoff for an education technology product family.</p>
+          </article>
+
+          <article class="work-card work-card--impact" data-reveal data-spotlight>
+            <div class="work-card__top"><h3>Cultivating Impact</h3><span class="work-card__index">03</span></div>
+            <p class="work-card__role">Strategy and growth · 2026 to now</p>
+            <p class="work-card__copy">I help Harry Jones with positioning, website direction, LinkedIn presence, and growth strategy.</p>
+          </article>
+
+          <article class="work-card work-card--insured work-card--compact" data-reveal data-spotlight>
+            <div class="work-card__top"><h3>Insured Nomads</h3><span class="work-card__index">04</span></div>
+            <p class="work-card__role">Remote role with a US company</p>
+            <p class="work-card__copy">Website, SEO, editorial, and social media work.</p>
+          </article>
+
+          <article class="work-card work-card--english work-card--compact" data-reveal data-spotlight>
+            <div class="work-card__top"><h3>English Plus</h3><span class="work-card__index">05</span></div>
+            <p class="work-card__role">Identity and brand kit</p>
+            <p class="work-card__copy">A practical identity system for an English-learning business in Ferghana.</p>
+          </article>
+
+          <article class="work-card work-card--simon work-card--compact" data-reveal data-spotlight>
+            <div class="work-card__top"><h3>Simon &amp; Sons</h3><span class="work-card__index">06</span></div>
+            <p class="work-card__role">Brand identity and website direction</p>
+            <p class="work-card__copy">Brand and website work for a Lahore trading company.</p>
+          </article>
+
+          <article class="work-card work-card--cloud work-card--compact" data-reveal data-spotlight>
+            <div class="work-card__top"><h3>Cloud School</h3><span class="work-card__index">07</span></div>
+            <p class="work-card__role">Community development</p>
+            <p class="work-card__copy">Work tied to economic opportunity and women’s financial sustainability.</p>
+          </article>
         </div>
 
-        <div class="relay" aria-label="Working method">
-          <div class="relay-step">
-            <span class="relay-node" aria-hidden="true"></span>
-            <strong>Recognize</strong>
-            <span>Find the real problem, not the first description of it.</span>
-          </div>
-          <div class="relay-step">
-            <span class="relay-node" aria-hidden="true"></span>
-            <strong>Connect</strong>
-            <span>Join the brand, business, audience, and delivery reality.</span>
-          </div>
-          <div class="relay-step">
-            <span class="relay-node" aria-hidden="true"></span>
-            <strong>Grow</strong>
-            <span>Build something the team can keep using after handoff.</span>
-          </div>
+        <div style="margin-top:28px" data-reveal>
+          <a class="text-link" href="work.html">View the full work page <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="shell signal-statement reveal">
-        <div class="navy-panel">
-          <p class="eyebrow" style="color: var(--bone)">The gap I work in</p>
-          <h2>Good ideas often arrive without a working system.</h2>
-          <div class="proof-line">
-            <span>Software services</span>
-            <span>Education technology</span>
-            <span>Founder communities</span>
-          </div>
+    <section class="section" aria-labelledby="journey-title">
+      <div class="shell journey-preview glass-panel" data-reveal>
+        <div class="journey-preview__title">
+          <h2 id="journey-title">Punjab, Lahore, Ferghana.</h2>
         </div>
-        <div class="plain-panel">
-          <p>That gap is where I am useful: translating between what leadership means, what the market hears, and what the team can actually ship.</p>
-          <p>I can move from the positioning argument to the page, campaign, outbound offer, or playbook without losing the reason it exists.</p>
+        <div class="journey-preview__copy">
+          <p>I grew up in Punjab, studied Marketing &amp; Sales in Lahore, and now work from Ferghana with teams across different markets.</p>
+          <a class="text-link" href="journey.html">Read the journey <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="selected-work-title">
-      <div class="shell">
-        <div class="section-heading reveal">
-          <p class="section-kicker">Selected work</p>
-          <div>
-            <h2 class="section-title" id="selected-work-title">Three live problems. Three different systems.</h2>
-            <p class="section-lede">Current work spans business development, brand architecture, web direction, analytics, and growth. The connecting thread is clarity that survives execution.</p>
-          </div>
-        </div>
-
-        <article class="work-feature reveal">
-          <div class="work-feature-content">
-            <span class="case-index">01 · Current role</span>
-            <h3 class="case-title">Silk Road Professionals</h3>
-            <p class="case-role">Business development · positioning · outbound</p>
-            <p class="case-copy">For a Central Asian software team serving English-speaking markets, I shape how the company explains its value and turns expertise into qualified conversations.</p>
-          </div>
-          <aside class="work-feature-rail" aria-label="Selected SRP deliverables">
-            <ul class="artifact-list">
-              <li>Offer and ICP definition</li>
-              <li>Outbound system</li>
-              <li>LinkedIn and website direction</li>
-              <li>Case-study architecture</li>
-            </ul>
-            <a class="button" href="/work#srp">Read the case</a>
-          </aside>
-        </article>
-
-        <div class="work-pair">
-          <article class="work-card teal-cap reveal">
-            <div>
-              <span class="case-index" style="color: var(--navy); margin-bottom: 42px">02 · Brand system</span>
-              <h3>Candle</h3>
-              <p>Built the architecture and visual direction for an education software family, giving Candle K12 the spotlight without erasing Candle Primary or the parent brand.</p>
-            </div>
-            <div class="tag-row" aria-label="Candle work areas">
-              <span class="tag">Brand architecture</span>
-              <span class="tag">Identity system</span>
-              <span class="tag">Website direction</span>
-            </div>
-          </article>
-
-          <article class="work-card red-cap reveal">
-            <div>
-              <span class="case-index" style="color: var(--red); margin-bottom: 42px">03 · Growth engagement</span>
-              <h3>Cultivating Impact</h3>
-              <p>Turned analytics and scattered brand touchpoints into a clearer website, LinkedIn presence, and member-growth system for founder peer groups.</p>
-            </div>
-            <div class="tag-row" aria-label="Cultivating Impact work areas">
-              <span class="tag">Analytics</span>
-              <span class="tag">Brand structure</span>
-              <span class="tag">Member growth</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="approach-title">
-      <div class="shell approach">
-        <div class="approach-intro reveal">
-          <p class="eyebrow">How I work</p>
-          <h2 id="approach-title">Clarity before volume.</h2>
-          <p>No giant discovery theatre. No campaign before the offer makes sense. No polished page carrying a confused idea.</p>
-        </div>
-        <div>
-          <article class="approach-step reveal">
-            <span class="approach-number">01</span>
-            <div>
-              <h3>Read the room</h3>
-              <p>Listen for the gap between what the team says, what customers experience, and what the business needs next.</p>
-            </div>
-          </article>
-          <article class="approach-step reveal">
-            <span class="approach-number">02</span>
-            <div>
-              <h3>Make the argument clear</h3>
-              <p>Choose the audience, sharpen the promise, and make the tradeoffs visible before adding channels or design.</p>
-            </div>
-          </article>
-          <article class="approach-step reveal">
-            <span class="approach-number">03</span>
-            <div>
-              <h3>Build the repeatable part</h3>
-              <p>Turn the strategy into pages, messages, workflows, and guidance that another person can actually operate.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="about-band" aria-labelledby="about-title">
-      <div class="shell about-grid">
-        <h2 class="about-quote reveal" id="about-title">Different places taught me to read the room before trying to change it.</h2>
-        <div class="about-copy reveal">
-          <p>I grew up in Punjab, studied marketing in Lahore, spent a semester in the United States, and now work from Ferghana, Uzbekistan. Crossing cultures made observation a working skill, not a brand story.</p>
-          <p>The quieter rule underneath the work is stewardship: tell the truth, serve people well, keep your word, and leave what you touch stronger than you found it.</p>
-          <a href="/journey">Read the short journey →</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-band">
-      <div class="shell cta-grid">
-        <h2 class="reveal">Bring the <span>messy</span> version.</h2>
-        <div class="cta-side reveal">
-          <p>You do not need a polished brief. Tell me what is stuck, what changed, or what the team keeps circling.</p>
-          <a class="button" href="/contact">Start the conversation</a>
+    <section class="section" aria-labelledby="contact-title">
+      <div class="shell closing-panel glass-panel" data-reveal data-spotlight>
+        <h2 id="contact-title">Have a brand or growth problem to solve?</h2>
+        <div class="closing-panel__action">
+          <p>Share the business, the context, and what needs to change.</p>
+          <a class="button button--primary" href="contact.html">Start a conversation <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="shell footer-grid">
-      <div>© <span data-year>2026</span> Zaim Sharoon · Ferghana, Uzbekistan</div>
-      <div>Truth · service · stewardship</div>
+    <div class="shell footer-frame">
+      <span>© <span data-year>2026</span> Zaim Sharoon</span>
+      <span>Brand &amp; Growth Strategist</span>
       <div class="footer-links">
         <a href="mailto:me@zaimsharoon.com">Email</a>
         <a href="https://www.linkedin.com/in/zaimsharoon" target="_blank" rel="noopener noreferrer">LinkedIn</a>

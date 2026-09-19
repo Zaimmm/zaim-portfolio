@@ -3,113 +3,88 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Contact Zaim Sharoon about a brand, growth, website, positioning, or business-development problem.">
-  <meta name="theme-color" content="#123A5F">
-  <title>Contact — Zaim Sharoon</title>
+  <meta name="description" content="Contact Zaim Sharoon about brand strategy, content systems, website direction, or growth strategy.">
+  <meta name="theme-color" content="#08090B">
+  <title>Contact | Zaim Sharoon</title>
   <link rel="canonical" href="https://zaimsharoon.com/contact">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <script src="/site.js" defer></script>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.26/dist/lenis.css">
+  <script>document.documentElement.classList.add('has-js')</script>
+  <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js" defer></script>
+  <script src="ambient.js" defer></script>
+  <script src="site.js" defer></script>
 </head>
-<body>
+<body class="contact-page">
   <a class="skip-link" href="#main">Skip to content</a>
+  <canvas class="ambient-canvas" data-ambient-canvas aria-hidden="true"></canvas>
+  <div class="ambient-shade" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
 
-  <header class="site-header">
-    <nav class="nav" aria-label="Primary navigation">
-      <a class="wordmark" href="/" aria-label="Zaim Sharoon, home">
-        <span class="wordmark-mark" aria-hidden="true"></span>
-        <span>Zaim Sharoon</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Toggle navigation" data-menu-toggle><span></span></button>
-      <div class="nav-links" id="site-menu" data-menu>
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/work">Work</a>
-        <a class="nav-link" href="/journey">Journey</a>
-        <a class="nav-link" href="/contact" aria-current="page">Contact</a>
-      </div>
-      <a class="nav-cta" href="mailto:me@zaimsharoon.com">Start a conversation</a>
-    </nav>
+  <header class="site-header" data-site-header>
+    <a class="wordmark" href="index.html" aria-label="Zaim Sharoon, home">Zaim Sharoon</a>
+    <span class="header-role">Brand &amp; Growth Strategist</span>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle><span>Menu</span><i aria-hidden="true"></i></button>
   </header>
 
-  <main id="main">
-    <section class="page-hero">
-      <div class="shell page-hero-grid">
-        <div>
-          <p class="eyebrow">No polished brief required</p>
-          <h1>Bring me the <span>messy</span> version.</h1>
-        </div>
-        <div class="page-hero-aside reveal">
-          <p><strong>Tell me what is stuck, what changed, or what the team keeps circling.</strong></p>
-          <p>If I am not the right fit, I will say that plainly.</p>
-        </div>
-      </div>
-    </section>
-    <div class="teal-rule" aria-hidden="true"></div>
+  <div class="menu-overlay" id="site-menu" role="dialog" aria-modal="true" aria-label="Site navigation" aria-hidden="true" data-menu>
+    <div class="menu-curtain" data-menu-scrim aria-hidden="true"><i class="menu-curtain__band"></i><i class="menu-curtain__band"></i><i class="menu-curtain__band"></i><i class="menu-curtain__band"></i></div>
+    <div class="menu-panel">
+      <div class="menu-panel__top"><a class="wordmark" href="index.html">Zaim Sharoon</a><button class="menu-close" type="button" data-menu-close>Close</button></div>
+      <nav class="menu-nav" aria-label="Primary navigation"><a href="index.html">Home</a><a href="work.html">Work</a><a href="journey.html">Journey</a><a href="contact.html" aria-current="page">Contact</a></nav>
+      <div class="menu-panel__foot"><span>Ferghana, Uzbekistan</span><a href="mailto:me@zaimsharoon.com">me@zaimsharoon.com</a></div>
+    </div>
+  </div>
 
-    <section class="section">
-      <div class="shell contact-layout">
-        <aside class="contact-details reveal" aria-label="Contact details">
-          <p class="eyebrow">Direct routes</p>
-          <div class="contact-detail">
-            <span>Email</span>
-            <a href="mailto:me@zaimsharoon.com">me@zaimsharoon.com</a>
-          </div>
-          <div class="contact-detail">
-            <span>LinkedIn</span>
-            <a href="https://www.linkedin.com/in/zaimsharoon" target="_blank" rel="noopener noreferrer">linkedin.com/in/zaimsharoon</a>
-          </div>
-          <div class="contact-detail">
-            <span>Based</span>
-            <strong>Ferghana, Uzbekistan</strong>
-          </div>
-          <div class="contact-detail">
-            <span>Useful starting points</span>
-            <p>Positioning that will not settle · a website carrying the wrong story · outbound without a sharp offer · a brand system that has outgrown itself.</p>
-          </div>
-        </aside>
+  <div class="route-transition" data-route-transition aria-hidden="true"><i class="route-transition__band"></i><i class="route-transition__band"></i><i class="route-transition__band"></i><i class="route-transition__band"></i></div>
 
-        <form class="contact-form reveal" data-contact-form>
-          <h2>Start with what is true.</h2>
+  <main id="main" class="page-main">
+    <section class="page-intro">
+      <div class="shell contact-stage">
+        <div class="contact-copy" data-reveal>
+          <h1>Contact</h1>
+          <p>For brand strategy, content systems, website direction, or growth strategy, send me the business context and what needs to change.</p>
+
+          <div class="contact-routes">
+            <div class="contact-route"><span>Email</span><a href="mailto:me@zaimsharoon.com">me@zaimsharoon.com</a></div>
+            <div class="contact-route"><span>LinkedIn</span><a href="https://www.linkedin.com/in/zaimsharoon" target="_blank" rel="noopener noreferrer">linkedin.com/in/zaimsharoon</a></div>
+            <div class="contact-route"><span>Based in</span><strong>Ferghana, Uzbekistan</strong></div>
+          </div>
+        </div>
+
+        <form class="contact-form" data-contact-form data-reveal>
+          <h2>Send a note</h2>
           <div class="field">
-            <label for="name">Your name</label>
-            <input id="name" name="name" type="text" autocomplete="name" placeholder="Name" required>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
           </div>
           <div class="field">
-            <label for="email">Your email</label>
-            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
           </div>
           <div class="field">
-            <label for="message">What is going on?</label>
-            <textarea id="message" name="message" placeholder="The unpolished version is welcome." required></textarea>
+            <label for="message">What do you need help with?</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
           </div>
-          <button class="button" type="submit">Open email draft</button>
-          <p class="form-note">This opens a draft in your email app. Nothing is sent automatically.</p>
+          <div class="form-actions">
+            <button class="button button--primary" type="submit">Open email draft <span aria-hidden="true">↗</span></button>
+            <p>Nothing is sent automatically.</p>
+          </div>
           <p class="form-status" aria-live="polite" data-form-status></p>
         </form>
-      </div>
-    </section>
-
-    <section class="about-band">
-      <div class="shell about-grid">
-        <h2 class="about-quote reveal">Good work starts with candor, not a sales performance.</h2>
-        <div class="about-copy reveal">
-          <p>I will ask direct questions, protect the scope from unnecessary work, and tell you when the problem needs a different kind of specialist.</p>
-          <p>The goal is not to sell the biggest engagement. It is to identify the next useful move and do it well.</p>
-        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="shell footer-grid">
-      <div>© <span data-year>2026</span> Zaim Sharoon · Ferghana, Uzbekistan</div>
-      <div>Truth · service · stewardship</div>
-      <div class="footer-links">
-        <a href="mailto:me@zaimsharoon.com">Email</a>
-        <a href="https://www.linkedin.com/in/zaimsharoon" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
+    <div class="shell footer-frame">
+      <span>© <span data-year>2026</span> Zaim Sharoon</span><span>Brand &amp; Growth Strategist</span>
+      <div class="footer-links"><a href="mailto:me@zaimsharoon.com">Email</a><a href="https://www.linkedin.com/in/zaimsharoon" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
     </div>
   </footer>
 </body>

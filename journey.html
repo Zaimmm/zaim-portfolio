@@ -3,148 +3,108 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The short journey behind Zaim Sharoon’s brand and growth practice—from Punjab and Lahore to the United States and Ferghana.">
-  <meta name="theme-color" content="#123A5F">
-  <title>Journey — Zaim Sharoon</title>
+  <meta name="description" content="Zaim Sharoon's journey from Punjab and Lahore to brand and growth work from Ferghana.">
+  <meta name="theme-color" content="#08090B">
+  <title>Journey | Zaim Sharoon</title>
   <link rel="canonical" href="https://zaimsharoon.com/journey">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <script src="/site.js" defer></script>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.26/dist/lenis.css">
+  <script>document.documentElement.classList.add('has-js')</script>
+  <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lenis@1.3.26/dist/lenis.min.js" defer></script>
+  <script src="ambient.js" defer></script>
+  <script src="site.js" defer></script>
 </head>
-<body>
+<body class="journey-page">
   <a class="skip-link" href="#main">Skip to content</a>
+  <canvas class="ambient-canvas" data-ambient-canvas aria-hidden="true"></canvas>
+  <div class="ambient-shade" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
 
-  <header class="site-header">
-    <nav class="nav" aria-label="Primary navigation">
-      <a class="wordmark" href="/" aria-label="Zaim Sharoon, home">
-        <span class="wordmark-mark" aria-hidden="true"></span>
-        <span>Zaim Sharoon</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Toggle navigation" data-menu-toggle><span></span></button>
-      <div class="nav-links" id="site-menu" data-menu>
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/work">Work</a>
-        <a class="nav-link" href="/journey" aria-current="page">Journey</a>
-        <a class="nav-link" href="/contact">Contact</a>
-      </div>
-      <a class="nav-cta" href="mailto:me@zaimsharoon.com">Start a conversation</a>
-    </nav>
+  <header class="site-header" data-site-header>
+    <a class="wordmark" href="index.html" aria-label="Zaim Sharoon, home">Zaim Sharoon</a>
+    <span class="header-role">Brand &amp; Growth Strategist</span>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle><span>Menu</span><i aria-hidden="true"></i></button>
   </header>
 
-  <main id="main">
-    <section class="page-hero">
-      <div class="shell page-hero-grid">
-        <div>
-          <p class="eyebrow">Manawala · Lahore · USA · Ferghana</p>
-          <h1>The route changed. The <span>thread</span> did not.</h1>
+  <div class="menu-overlay" id="site-menu" role="dialog" aria-modal="true" aria-label="Site navigation" aria-hidden="true" data-menu>
+    <div class="menu-curtain" data-menu-scrim aria-hidden="true"><i class="menu-curtain__band"></i><i class="menu-curtain__band"></i><i class="menu-curtain__band"></i><i class="menu-curtain__band"></i></div>
+    <div class="menu-panel">
+      <div class="menu-panel__top"><a class="wordmark" href="index.html">Zaim Sharoon</a><button class="menu-close" type="button" data-menu-close>Close</button></div>
+      <nav class="menu-nav" aria-label="Primary navigation"><a href="index.html">Home</a><a href="work.html">Work</a><a href="journey.html" aria-current="page">Journey</a><a href="contact.html">Contact</a></nav>
+      <div class="menu-panel__foot"><span>Ferghana, Uzbekistan</span><a href="mailto:me@zaimsharoon.com">me@zaimsharoon.com</a></div>
+    </div>
+  </div>
+
+  <div class="route-transition" data-route-transition aria-hidden="true"><i class="route-transition__band"></i><i class="route-transition__band"></i><i class="route-transition__band"></i><i class="route-transition__band"></i></div>
+
+  <main id="main" class="page-main">
+    <section class="page-intro">
+      <div class="shell journey-hero glass-panel" data-reveal>
+        <div class="journey-hero__copy">
+          <h1>Journey</h1>
+          <p>I grew up in Punjab, studied Marketing &amp; Sales in Lahore, and now work from Ferghana, Uzbekistan.</p>
         </div>
-        <div class="page-hero-aside reveal">
-          <p><strong>Learn the room. Tell the truth. Build something useful.</strong></p>
-          <p>This is the two-minute version of how those habits became a brand and growth practice.</p>
-        </div>
+        <figure>
+          <img src="assets/zaim-portrait.webp" width="873" height="873" alt="Zaim Sharoon">
+        </figure>
       </div>
     </section>
-    <div class="teal-rule" aria-hidden="true"></div>
 
-    <section class="section" aria-label="Journey timeline">
-      <div class="shell journey-rail">
-        <article class="journey-stop reveal">
-          <p class="journey-year">Roots</p>
-          <h2>Manawala to Lahore</h2>
-          <p>I come from Manawala near Nankana Sahib in Punjab and grew up in Lahore. Moving between a small-town origin and a large, competitive city taught me to notice context before assuming I understood it.</p>
+    <section class="journey-section" aria-label="Career journey">
+      <div class="shell journey-sheet">
+        <article class="journey-row" data-reveal>
+          <p class="journey-row__time">Roots</p>
+          <h2>Manawala, Punjab</h2>
+          <p>I grew up in Manawala near Nankana Sahib in Punjab.</p>
         </article>
 
-        <article class="journey-stop reveal">
-          <p class="journey-year">2021–2025</p>
-          <h2>Business school, with the work already started</h2>
-          <p>I completed a BBA in Marketing & Sales at Forman Christian College with a 3.64 CGPA. Community work and early client projects kept the degree grounded in people, tradeoffs, and real delivery.</p>
+        <article class="journey-row" data-reveal>
+          <p class="journey-row__time">2021 to 2025</p>
+          <h2>Forman Christian College, Lahore</h2>
+          <p>I completed a BBA in Marketing &amp; Sales with a 3.64 CGPA. Community work and early client projects ran alongside the degree.</p>
         </article>
 
-        <article class="journey-stop reveal">
-          <p class="journey-year">During university</p>
-          <h2>A semester in the United States</h2>
-          <p>The UGRAD exchange put me inside a different culture, classroom, and market. It made cross-cultural translation practical: the same message does not land the same way everywhere.</p>
+        <article class="journey-row" data-reveal>
+          <p class="journey-row__time">Early work</p>
+          <h2>Local, community, and remote experience</h2>
+          <p>Cloud School, Simon &amp; Sons, and remote work with the US company Insured Nomads gave me experience across community development, a Lahore trading business, and an international marketing team.</p>
         </article>
 
-        <article class="journey-stop reveal">
-          <p class="journey-year">2022–2025</p>
-          <h2>Early proof through varied work</h2>
-          <p>Cloud School, Simon & Sons, and Insured Nomads exposed me to community development, a local trading business, and a US marketing team. The common lesson was simple: good ideas fail when nobody builds the operating layer.</p>
-        </article>
-
-        <article class="journey-stop reveal">
-          <p class="journey-year">August 2025</p>
+        <article class="journey-row" data-reveal>
+          <p class="journey-row__time">August 2025</p>
           <h2>Moving to Ferghana</h2>
-          <p>I joined Silk Road Professionals and moved to Uzbekistan. The role grew from marketing into business development across positioning, content, website direction, outbound, research, and sales.</p>
+          <p>I moved to Uzbekistan and joined Silk Road Professionals. My role expanded across brand, content, website direction, and growth.</p>
         </article>
 
-        <article class="journey-stop reveal">
-          <p class="journey-year">2026–now</p>
-          <h2>The lane becomes clear</h2>
-          <p>Work with Candle and Cultivating Impact made the pattern visible: I am strongest where brand clarity, commercial thinking, design direction, and practical execution have to stay connected.</p>
+        <article class="journey-row" data-reveal>
+          <p class="journey-row__time">Now</p>
+          <h2>Brand &amp; Growth Strategist</h2>
+          <p>At SRP, I handle brand, content, and growth. Alongside that role, I shape Candle’s brand and website direction and help Harry Jones with strategy and growth.</p>
         </article>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="now-title">
-      <div class="shell now-panel reveal">
-        <div>
-          <p class="eyebrow" style="color: var(--bone)">Current chapter</p>
-          <h2 id="now-title">Based in Ferghana. Working across borders.</h2>
-        </div>
-        <div class="now-panel-aside">
-          <div class="now-line">
-            <strong>Primary role</strong>
-            <span>Business development at Silk Road Professionals</span>
-          </div>
-          <div class="now-line">
-            <strong>Active work</strong>
-            <span>Candle · Cultivating Impact · SRP</span>
-          </div>
-          <div class="now-line">
-            <strong>Practice</strong>
-            <span>Brand systems · growth strategy · web direction · outbound</span>
-          </div>
-          <div class="now-line">
-            <strong>Perspective</strong>
-            <span>Punjab roots · US exchange · Central Asia</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="about-band">
-      <div class="shell about-grid">
-        <h2 class="about-quote reveal">Ambition matters. So does what it asks of other people.</h2>
-        <div class="about-copy reveal">
-          <p>I want the work to grow, but not by becoming careless with truth, time, or people. Stewardship is the quiet standard underneath the visible output.</p>
-          <p>That means honest diagnosis, useful handoffs, and relationships that can outlast the immediate project.</p>
-          <a href="/work">See how that shows up in the work →</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-band">
-      <div class="shell cta-grid">
-        <h2 class="reveal">The next chapter starts with a <span>real</span> problem.</h2>
-        <div class="cta-side reveal">
-          <p>If you are carrying one, tell me the unpolished version.</p>
-          <a class="button" href="/contact">Start the conversation</a>
+    <section class="section" aria-labelledby="work-link-title">
+      <div class="shell closing-panel glass-panel" data-reveal data-spotlight>
+        <h2 id="work-link-title">See the work.</h2>
+        <div class="closing-panel__action">
+          <p>Current roles, collaborations, and selected earlier projects.</p>
+          <a class="button button--primary" href="work.html">View work <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="shell footer-grid">
-      <div>© <span data-year>2026</span> Zaim Sharoon · Ferghana, Uzbekistan</div>
-      <div>Truth · service · stewardship</div>
-      <div class="footer-links">
-        <a href="mailto:me@zaimsharoon.com">Email</a>
-        <a href="https://www.linkedin.com/in/zaimsharoon" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
+    <div class="shell footer-frame">
+      <span>© <span data-year>2026</span> Zaim Sharoon</span><span>Brand &amp; Growth Strategist</span>
+      <div class="footer-links"><a href="mailto:me@zaimsharoon.com">Email</a><a href="https://www.linkedin.com/in/zaimsharoon" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
     </div>
   </footer>
 </body>
