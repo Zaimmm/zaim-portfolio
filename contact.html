@@ -3,24 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Contact Zaim Sharoon about a brand, growth, website, positioning, or business-development problem.">
+  <meta name="description" content="Contact Zaim Sharoon about a brand, content, growth, website, or positioning problem.">
   <meta name="theme-color" content="#123A5F">
   <title>Contact — Zaim Sharoon</title>
   <link rel="canonical" href="https://zaimsharoon.com/contact">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <script src="/site.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
 
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
       <a class="wordmark" href="/" aria-label="Zaim Sharoon, home">
-        <span class="wordmark-mark" aria-hidden="true"></span>
-        <span>Zaim Sharoon</span>
+        <span class="wordmark-first">Zaim</span>
+        <span class="wordmark-last">Sharoon</span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Toggle navigation" data-menu-toggle><span></span></button>
       <div class="nav-links" id="site-menu" data-menu>
@@ -29,48 +30,44 @@
         <a class="nav-link" href="/journey">Journey</a>
         <a class="nav-link" href="/contact" aria-current="page">Contact</a>
       </div>
-      <a class="nav-cta" href="mailto:me@zaimsharoon.com">Start a conversation</a>
+      <a class="nav-cta" href="mailto:me@zaimsharoon.com">Start a conversation <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
 
   <main id="main">
-    <section class="page-hero">
-      <div class="shell page-hero-grid">
-        <div>
-          <p class="eyebrow">No polished brief required</p>
-          <h1>Bring me the <span>messy</span> version.</h1>
-        </div>
-        <div class="page-hero-aside reveal">
-          <p><strong>Tell me what is stuck, what changed, or what the team keeps circling.</strong></p>
-          <p>If I am not the right fit, I will say that plainly.</p>
-        </div>
+    <section class="page-intro">
+      <div class="shell">
+        <p class="page-context reveal">No polished brief required</p>
+        <h1 class="page-title">
+          <span class="page-title-line"><span>Bring me the</span></span>
+          <span class="page-title-line"><span><em>messy</em> version.</span></span>
+        </h1>
+        <p class="page-lede reveal">Tell me what is stuck, what changed, or what the team keeps circling. If I am not the right fit, I will say that plainly.</p>
       </div>
     </section>
-    <div class="teal-rule" aria-hidden="true"></div>
 
     <section class="section">
       <div class="shell contact-layout">
         <aside class="contact-details reveal" aria-label="Contact details">
-          <p class="eyebrow">Direct routes</p>
+          <h2>Direct routes</h2>
           <div class="contact-detail">
-            <span>Email</span>
+            <p>Email</p>
             <a href="mailto:me@zaimsharoon.com">me@zaimsharoon.com</a>
           </div>
           <div class="contact-detail">
-            <span>LinkedIn</span>
+            <p>LinkedIn</p>
             <a href="https://www.linkedin.com/in/zaimsharoon" target="_blank" rel="noopener noreferrer">linkedin.com/in/zaimsharoon</a>
           </div>
           <div class="contact-detail">
-            <span>Based</span>
+            <p>Based in</p>
             <strong>Ferghana, Uzbekistan</strong>
           </div>
-          <div class="contact-detail">
-            <span>Useful starting points</span>
-            <p>Positioning that will not settle · a website carrying the wrong story · outbound without a sharp offer · a brand system that has outgrown itself.</p>
+          <div class="contact-start">
+            <p>Useful starting points include positioning that will not settle, a website carrying the wrong story, content without a system, or growth work without a clear direction.</p>
           </div>
         </aside>
 
-        <form class="contact-form reveal" data-contact-form>
+        <form class="contact-form reveal reveal--depth" data-contact-form>
           <h2>Start with what is true.</h2>
           <div class="field">
             <label for="name">Your name</label>
@@ -84,7 +81,7 @@
             <label for="message">What is going on?</label>
             <textarea id="message" name="message" placeholder="The unpolished version is welcome." required></textarea>
           </div>
-          <button class="button" type="submit">Open email draft</button>
+          <button class="button button--bone" type="submit">Open email draft <span aria-hidden="true">↗</span></button>
           <p class="form-note">This opens a draft in your email app. Nothing is sent automatically.</p>
           <p class="form-status" aria-live="polite" data-form-status></p>
         </form>
