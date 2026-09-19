@@ -1,939 +1,231 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Zaim Sharoon — Brand & Marketing Strategist. GTM systems, outbound, brand strategy. Based in Ferghana, Uzbekistan." />
-  <title>Zaim Sharoon — Brand & Marketing Strategist</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
-  <style>
-    :root {
-      --bone:   #F2F0EB;
-      --ink:    #111111;
-      --signal: #C8390A;
-      --muted:  #D8D5CF;
-      --fd: 'Space Grotesk', sans-serif;
-      --fm: 'DM Mono', monospace;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Zaim Sharoon is a Brand & Growth Strategist building positioning, websites, content, and growth systems for software teams and founder-led companies.">
+  <meta name="theme-color" content="#123A5F">
+  <title>Zaim Sharoon — Brand & Growth Strategist</title>
+  <link rel="canonical" href="https://zaimsharoon.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/site.js" defer></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Zaim Sharoon",
+      "url": "https://zaimsharoon.com/",
+      "jobTitle": "Brand & Growth Strategist",
+      "sameAs": ["https://www.linkedin.com/in/zaimsharoon"]
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--fd); background: var(--bone); color: var(--ink); overflow-x: hidden; }
-    a { text-decoration: none; color: inherit; }
-    ::selection { background: var(--ink); color: var(--signal); }
-
-    /* ── SCROLL PROGRESS ── */
-    .scroll-prog {
-      position: fixed; top: 0; left: 0;
-      height: 3px; background: var(--signal);
-      z-index: 999; width: 0%;
-      transition: width 0.05s linear;
-    }
-
-    /* ══════════════════════════════════
-       NAV
-    ══════════════════════════════════ */
-    .nav-wrap {
-      position: fixed; top: 16px;
-      left: 50%; transform: translateX(-50%);
-      z-index: 400; pointer-events: none;
-      opacity: 0; width: max-content;
-    }
-    .nav-bar {
-      pointer-events: all;
-      display: flex; align-items: center;
-      height: 52px; background: var(--ink);
-      border: 2px solid var(--ink);
-      border-radius: 9999px;
-      box-shadow: 4px 4px 0 0 var(--ink);
-      overflow: hidden; gap: 4px; padding: 0 6px 0 0;
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: 7px;
-      padding: 0 16px 0 14px; height: 100%;
-      background: var(--signal); border-right: 2px solid var(--ink);
-      font-family: var(--fd); font-weight: 900;
-      font-size: 0.72rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--bone);
-      cursor: pointer; flex-shrink: 0;
-      transition: background 0s, color 0s, transform 0.08s ease;
-    }
-    .nav-logo:hover { background: var(--bone); color: var(--ink); }
-    .nav-logo:active { transform: translate(1px,1px); }
-    .geo { display: flex; align-items: center; gap: 3px; }
-    .g-c { width:7px; height:7px; border-radius:50%; background:currentColor; }
-    .g-s { width:7px; height:7px; background:currentColor; }
-    .g-t { width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-bottom:7px solid currentColor; }
-    .nav-pills { display:flex; align-items:center; gap:4px; padding-left:2px; }
-    .nav-pill {
-      position: relative; display: inline-flex;
-      align-items: center; justify-content: center;
-      height: 38px; padding: 0 16px;
-      border-radius: 9999px; background: var(--bone);
-      font-family: var(--fd); font-size: 0.68rem;
-      font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--ink);
-      cursor: pointer; overflow: hidden; flex-shrink: 0;
-      transition: transform 0.08s ease;
-    }
-    .nav-pill.active { background: var(--signal); color: var(--bone); }
-    .nav-pill:active { transform: translate(1px,1px); }
-    .pill-circle {
-      position: absolute; left: 50%; bottom: 0;
-      border-radius: 50%; background: var(--ink);
-      pointer-events: none; z-index: 1; will-change: transform;
-    }
-    .label-stack {
-      position: relative; display: inline-block;
-      line-height: 1; overflow: hidden; padding: 2px 0; z-index: 2;
-    }
-    .label-default { display: block; will-change: transform; }
-    .label-hover {
-      position: absolute; left: 0; top: 2px;
-      width: 100%; text-align: center; color: var(--bone);
-      will-change: transform, opacity; z-index: 3;
-    }
-    .nav-pill.active .label-hover { display: none; }
-    .nav-right { display:flex; align-items:center; gap:2px; margin-left:2px; }
-    .nav-avail {
-      display:flex; align-items:center; gap:5px;
-      padding:0 12px; height:38px; border-radius:9999px;
-      font-family:var(--fm); font-size:0.54rem; letter-spacing:0.06em;
-      color:rgba(242,240,235,0.45); cursor:default; flex-shrink:0;
-    }
-    .nav-avail:hover { background:rgba(242,240,235,0.07); }
-    .avail-dot {
-      width:6px; height:6px; border-radius:50%;
-      background:#22c55e; flex-shrink:0;
-      animation: blink 2.6s ease infinite;
-    }
-    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.25;} }
-    .nav-icon {
-      display:flex; align-items:center; justify-content:center;
-      width:36px; height:36px; border-radius:9999px;
-      color:rgba(242,240,235,0.4); cursor:pointer; flex-shrink:0;
-      transition: background 0s, color 0s, transform 0.08s ease;
-    }
-    .nav-icon:hover { background:rgba(242,240,235,0.1); color:var(--bone); }
-    .nav-icon:active { transform:translate(1px,1px); }
-    .nav-icon svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
-    #tip {
-      position:fixed; background:var(--ink); color:var(--bone);
-      font-family:var(--fm); font-size:0.5rem; letter-spacing:0.14em;
-      text-transform:uppercase; padding:5px 9px; border-radius:3px;
-      box-shadow:2px 2px 0 0 var(--signal); white-space:nowrap;
-      pointer-events:none; opacity:0; transform:translateY(-4px);
-      transition:opacity 0.1s, transform 0.1s; z-index:9999;
-    }
-    #tip.show { opacity:1; transform:translateY(0); }
-
-    /* ══════════════════════════════════
-       HERO — Signal red fullscreen
-    ══════════════════════════════════ */
-    .hero {
-      background: var(--signal);
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      position: relative; overflow: hidden;
-      padding-bottom: 5rem;
-      border-bottom: 3px solid var(--ink);
-    }
-    .hero::after {
-      content: '';
-      position: absolute; bottom: -2px; left: -5%; right: -5%;
-      height: 80px; background: var(--ink);
-      transform: skewY(-1.5deg); transform-origin: bottom left;
-    }
-    .hero-name-wrap {
-      flex: 1; display: flex; align-items: center;
-      justify-content: center; padding: 7rem 2rem 2rem;
-    }
-    .hero-name {
-      text-align: center; line-height: 0.85;
-      letter-spacing: -0.04em; text-transform: uppercase;
-    }
-    .name-line {
-      display: block; font-family: var(--fd); font-weight: 900;
-      font-size: clamp(4rem, 16vw, 18rem); color: var(--ink);
-    }
-    .name-line.outline {
-      color: transparent; -webkit-text-stroke: 3px var(--ink);
-      font-size: clamp(3rem, 11vw, 12rem);
-    }
-    .hero-rule { width: calc(100% - 5rem); margin: 0 2.5rem; height: 2px; background: var(--ink); flex-shrink: 0; }
-    .hero-meta {
-      display: grid; grid-template-columns: 1fr auto 1fr;
-      align-items: center; padding: 1.75rem 2.5rem; gap: 1rem; flex-shrink: 0;
-    }
-    .meta-left { display: flex; align-items: center; gap: 0.6rem; }
-    .meta-globe { width: 16px; height: 16px; stroke: var(--ink); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
-    .meta-loc { font-family: var(--fm); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
-    .scroll-badge { display: flex; align-items: center; justify-content: center; width: 100px; height: 100px; position: relative; flex-shrink: 0; }
-    .scroll-badge-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; animation: spin-slow 12s linear infinite; }
-    @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    .scroll-badge-center { width: 46px; height: 46px; border-radius: 50%; background: var(--ink); display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
-    .scroll-badge-center svg { width: 18px; height: 18px; stroke: var(--bone); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .meta-right { text-align: right; }
-    .meta-role { font-family: var(--fm); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); line-height: 1.65; }
-    @media (max-width: 640px) {
-      .hero-meta { grid-template-columns: 1fr; gap: 1.5rem; }
-      .scroll-badge { margin: 0 auto; }
-      .meta-right { text-align: left; }
-    }
-
-    /* ══════════════════════════════════
-       MARQUEE
-    ══════════════════════════════════ */
-    .marquee-section {
-      background: var(--ink); padding-top: 2.5rem;
-      padding-bottom: 0.5rem; overflow: hidden; position: relative; z-index: 1;
-    }
-    .marquee-row { overflow: hidden; padding: 0.55rem 0; }
-    .marquee-track { display: inline-flex; white-space: nowrap; will-change: transform; }
-    .marquee-track.fwd { animation: marquee-fwd 22s linear infinite; }
-    .marquee-track.rev { animation: marquee-rev 26s linear infinite; }
-    @keyframes marquee-fwd { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    @keyframes marquee-rev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-    .m-item-lg { font-family: var(--fd); font-weight: 900; font-size: clamp(2rem, 6vw, 5rem); text-transform: uppercase; letter-spacing: -0.03em; line-height: 1; color: var(--signal); padding: 0 1.5rem; }
-    .m-item-sm { font-family: var(--fm); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(242,240,235,0.55); padding: 0 2rem; }
-    .m-star-lg { color: var(--signal); font-size: inherit; padding: 0 0.5rem; }
-    .m-star-sm { color: rgba(242,240,235,0.3); padding: 0 1rem; }
-    .marquee-divider { height: 1px; background: rgba(242,240,235,0.1); margin: 0 2.5rem; }
-
-    /* ══════════════════════════════════
-       HSCROLL PHILOSOPHY
-    ══════════════════════════════════ */
-    .hpin {
-      background: var(--ink);
-      border-bottom: 3px solid var(--ink);
-      overflow: hidden; position: relative;
-    }
-    .hpin-label {
-      position: absolute; top: 1.5rem; left: 2rem;
-      font-family: var(--fm); font-size: 0.5rem;
-      font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
-      color: rgba(242,240,235,0.15); z-index: 10; pointer-events: none;
-    }
-    .hpin-prog {
-      position: absolute; bottom: 0; left: 0;
-      height: 3px; background: var(--signal); width: 0%; z-index: 10;
-    }
-    .htrack {
-      display: inline-flex; align-items: center;
-      height: 100%; padding: 0 8vw;
-      will-change: transform; white-space: nowrap; gap: 0;
-    }
-    .w { font-family: var(--fd); font-weight: 900; text-transform: uppercase; letter-spacing: -0.04em; line-height: 0.88; white-space: nowrap; display: inline-block; }
-    .xl  { font-size: clamp(4.5rem, 10vw, 11rem); }
-    .lg  { font-size: clamp(3rem, 6.5vw, 7.5rem); }
-    .md  { font-size: clamp(2rem, 4vw, 4.5rem); }
-    .bone      { color: var(--bone); }
-    .red       { color: var(--signal); }
-    .dim       { color: rgba(242,240,235,0.2); font-weight: 700; }
-    .outline   { color: transparent; -webkit-text-stroke: 3px var(--bone); }
-    .outline-r { color: transparent; -webkit-text-stroke: 3px var(--signal); }
-    .gap-sm { display: inline-block; width: 0.28em; flex-shrink: 0; }
-    .gap-md { display: inline-block; width: 2.5vw; flex-shrink: 0; }
-    .gap-lg { display: inline-block; width: 5vw; flex-shrink: 0; }
-    .gap-xl { display: inline-block; width: 8vw; flex-shrink: 0; }
-    .pill {
-      display: inline-flex; align-items: center;
-      font-family: var(--fm); font-weight: 500;
-      font-size: clamp(0.65rem, 1.3vw, 1.1rem);
-      letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 0.45em 1.2em;
-      border: 2px solid var(--signal); border-radius: 9999px;
-      color: var(--signal); flex-shrink: 0; transform: rotate(-1.5deg); vertical-align: middle;
-    }
-    .hshape { display: inline-flex; align-items: center; flex-shrink: 0; }
-    .hstar { display: inline-block; font-size: clamp(3rem, 7vw, 8rem); color: var(--signal); font-weight: 900; font-family: var(--fd); line-height: 1; flex-shrink: 0; }
-    .cta-wrap {
-      display: inline-flex; flex-direction: column; justify-content: center;
-      gap: 1.5rem; flex-shrink: 0; padding-left: 7vw;
-      border-left: 2px solid rgba(242,240,235,0.1);
-      margin-left: 7vw; height: 60%;
-    }
-    .cta-eyebrow { font-family: var(--fm); font-size: clamp(0.5rem, 1vw, 0.72rem); font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(242,240,235,0.2); }
-    .cta-text { display: flex; flex-direction: column; gap: 0.05em; }
-    .cta-line { font-family: var(--fd); font-weight: 900; font-size: clamp(2rem, 4.5vw, 5rem); text-transform: uppercase; letter-spacing: -0.04em; line-height: 0.88; white-space: nowrap; color: var(--bone); }
-    .cta-line .cta-red { color: var(--signal); }
-    .cta-line .cta-out { color: transparent; -webkit-text-stroke: 2px var(--bone); }
-    .cta-btn-h {
-      display: inline-flex; align-items: center; gap: 0.75rem;
-      background: var(--signal); color: var(--bone);
-      font-family: var(--fd); font-weight: 700;
-      font-size: clamp(0.65rem, 1.2vw, 0.88rem);
-      text-transform: uppercase; letter-spacing: 0.1em;
-      padding: 0.9rem 1.75rem; border: 2px solid var(--bone);
-      box-shadow: 4px 4px 0 0 rgba(242,240,235,0.15);
-      cursor: pointer; text-decoration: none; width: fit-content;
-      transition: transform 0.08s ease, box-shadow 0.08s ease;
-    }
-    .cta-btn-h:hover  { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 0 rgba(242,240,235,0.15); }
-    .cta-btn-h:active { transform: translate(2px,2px); box-shadow: none; }
-    .cta-btn-h svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-    .end-pad { display: inline-block; width: 8vw; flex-shrink: 0; }
-
-    /* ══════════════════════════════════
-       WHAT I BELIEVE
-    ══════════════════════════════════ */
-    .beliefs-section {
-      background: var(--bone);
-      border-bottom: 3px solid var(--ink);
-    }
-    .beliefs-inner {
-      max-width: 1280px; margin: 0 auto;
-      padding: 5rem 2.5rem;
-    }
-    .beliefs-header {
-      display: flex; align-items: flex-end;
-      justify-content: space-between; gap: 2rem;
-      margin-bottom: 3rem; flex-wrap: wrap;
-    }
-    .beliefs-coord {
-      font-family: var(--fm); font-size: 0.58rem; font-weight: 500;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: rgba(17,17,17,0.28);
-    }
-    .beliefs-title {
-      font-family: var(--fd); font-weight: 900;
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      text-transform: uppercase; letter-spacing: -0.04em;
-      line-height: 0.88; color: var(--ink);
-    }
-    .beliefs-title em { color: var(--signal); font-style: normal; }
-
-    .beliefs-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border: 2px solid var(--ink);
-    }
-    @media (max-width: 768px) { .beliefs-grid { grid-template-columns: 1fr; } }
-
-    .belief-card {
-      padding: 2rem 1.75rem;
-      border-right: 2px solid var(--ink);
-      position: relative;
-      transition: background 0s;
-    }
-    .belief-card:last-child { border-right: none; }
-    .belief-card:hover { background: rgba(200,57,10,0.04); }
-
-    /* Signal red top bar on hover */
-    .belief-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px; background: var(--signal);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.15s ease;
-    }
-    .belief-card:hover::before { transform: scaleX(1); }
-
-    .belief-num {
-      font-family: var(--fm); font-size: 0.56rem; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--signal); margin-bottom: 1.25rem;
-    }
-    .belief-title {
-      font-family: var(--fd); font-weight: 900;
-      font-size: clamp(1rem, 2vw, 1.4rem);
-      text-transform: uppercase; letter-spacing: -0.02em;
-      line-height: 1.05; color: var(--ink);
-      margin-bottom: 0.85rem;
-    }
-    .belief-body {
-      font-size: 0.82rem; font-weight: 500;
-      line-height: 1.7; color: rgba(17,17,17,0.58);
-    }
-
-    /* ══════════════════════════════════
-       SELECTED WORK — 3 cards
-    ══════════════════════════════════ */
-    .work-section {
-      background: var(--bone);
-      border-bottom: 3px solid var(--ink);
-    }
-    .work-inner {
-      max-width: 1280px; margin: 0 auto;
-      padding: 5rem 2.5rem;
-    }
-    .work-header-row {
-      display: flex; align-items: flex-end;
-      justify-content: space-between; gap: 2rem;
-      margin-bottom: 3rem; flex-wrap: wrap;
-    }
-    .work-coord { font-family: var(--fm); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(17,17,17,0.28); }
-    .work-title { font-family: var(--fd); font-weight: 900; font-size: clamp(2.5rem, 5vw, 4.5rem); text-transform: uppercase; letter-spacing: -0.04em; line-height: 0.88; color: var(--ink); }
-    .work-title em { color: var(--signal); font-style: normal; }
-    .view-all-btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: var(--fd); font-weight: 700; font-size: 0.7rem;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      padding: 0.75rem 1.4rem; border: 2px solid var(--ink);
-      background: var(--bone); box-shadow: 3px 3px 0 0 var(--ink);
-      color: var(--ink); cursor: pointer;
-      transition: transform 0.08s ease, box-shadow 0.08s ease, background 0s;
-      white-space: nowrap;
-    }
-    .view-all-btn:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 0 var(--ink); background: var(--signal); color: var(--bone); border-color: var(--ink); }
-    .view-all-btn:active { transform: translate(2px,2px); box-shadow: none; }
-    .view-all-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0; border: 2px solid var(--ink);
-    }
-    @media (max-width: 768px) { .work-grid { grid-template-columns: 1fr; } }
-
-    .work-card {
-      border-right: 2px solid var(--ink);
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.12s ease, box-shadow 0.12s ease;
-      position: relative;
-    }
-    .work-card:last-child { border-right: none; }
-    .work-card:hover { transform: translate(-3px,-3px); box-shadow: 5px 5px 0 0 var(--ink); z-index: 2; }
-    .work-card:active { transform: translate(2px,2px); box-shadow: none; }
-
-    /* Card header — alternating Signal red / Ink */
-    .wc-head {
-      padding: 1rem 1.4rem;
-      border-bottom: 2px solid var(--ink);
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .wc-head.signal { background: var(--signal); }
-    .wc-head.ink    { background: var(--ink); }
-
-    .wc-index {
-      font-family: var(--fm); font-size: 0.56rem; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(242,240,235,0.6);
-    }
-    .wc-tag {
-      font-family: var(--fm); font-size: 0.5rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.25rem 0.65rem;
-      border: 1.5px solid rgba(242,240,235,0.35);
-      border-radius: 9999px; color: rgba(242,240,235,0.7);
-    }
-
-    .wc-body { padding: 1.5rem 1.4rem 1.75rem; background: var(--bone); }
-
-    .wc-name {
-      font-family: var(--fd); font-weight: 900;
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
-      text-transform: uppercase; letter-spacing: -0.03em;
-      line-height: 0.9; color: var(--ink);
-      margin-bottom: 0.5rem;
-    }
-    .wc-region {
-      font-family: var(--fm); font-size: 0.52rem; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--signal); margin-bottom: 0.85rem;
-    }
-    .wc-desc {
-      font-size: 0.8rem; font-weight: 500;
-      line-height: 1.65; color: rgba(17,17,17,0.58);
-      margin-bottom: 1rem;
-    }
-    .wc-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-    .wc-t {
-      font-family: var(--fm); font-size: 0.48rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.28rem 0.65rem;
-      border: 2px solid var(--ink); background: var(--bone);
-      box-shadow: 1.5px 1.5px 0 0 var(--ink); color: var(--ink);
-    }
-
-    /* ══════════════════════════════════
-       CTA SECTION
-    ══════════════════════════════════ */
-    .cta-section {
-      background: var(--ink);
-      border-bottom: 3px solid var(--ink);
-      padding: 6rem 2.5rem;
-      text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .cta-section::before {
-      content: 'BUILD';
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      font-family: var(--fd); font-weight: 900;
-      font-size: 28vw; text-transform: uppercase;
-      letter-spacing: -0.06em;
-      color: rgba(242,240,235,0.03);
-      pointer-events: none; white-space: nowrap; line-height: 1;
-    }
-    .cta-coord {
-      font-family: var(--fm); font-size: 0.58rem; font-weight: 500;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: rgba(242,240,235,0.2);
-      margin-bottom: 1.5rem; position: relative; z-index: 1;
-    }
-    .cta-heading {
-      font-family: var(--fd); font-weight: 900;
-      font-size: clamp(2.5rem, 7vw, 7rem);
-      text-transform: uppercase; letter-spacing: -0.04em;
-      line-height: 0.88; color: var(--bone);
-      margin-bottom: 2.5rem; position: relative; z-index: 1;
-    }
-    .cta-heading em { color: var(--signal); font-style: normal; -webkit-text-stroke: 0; }
-    .cta-heading .out { color: transparent; -webkit-text-stroke: 2px var(--bone); }
-    .cta-buttons {
-      display: flex; gap: 1rem; justify-content: center;
-      flex-wrap: wrap; position: relative; z-index: 1;
-    }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      background: var(--signal); color: var(--bone);
-      font-family: var(--fd); font-weight: 700; font-size: 0.75rem;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      padding: 1rem 2rem; border: 2px solid var(--bone);
-      box-shadow: 4px 4px 0 0 rgba(242,240,235,0.2);
-      cursor: pointer;
-      transition: transform 0.08s ease, box-shadow 0.08s ease;
-    }
-    .btn-primary:hover  { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 0 rgba(242,240,235,0.2); }
-    .btn-primary:active { transform: translate(2px,2px); box-shadow: none; }
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      background: transparent; color: var(--bone);
-      font-family: var(--fd); font-weight: 700; font-size: 0.75rem;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      padding: 1rem 2rem; border: 2px solid rgba(242,240,235,0.3);
-      cursor: pointer;
-      transition: transform 0.08s ease, border-color 0s, background 0s;
-    }
-    .btn-ghost:hover  { border-color: var(--bone); background: rgba(242,240,235,0.06); }
-    .btn-ghost:active { transform: translate(2px,2px); }
-    .btn-primary svg, .btn-ghost svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-
-    /* ══════════════════════════════════
-       FOOTER
-    ══════════════════════════════════ */
-    .footer {
-      background: var(--ink); border-top: 3px solid var(--ink);
-      padding: 2rem 2.5rem;
-      display: flex; align-items: center;
-      justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-    }
-    .footer-left { font-family: var(--fm); font-size: 0.54rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,240,235,0.28); line-height: 1.65; }
-    .footer-left span { color: var(--signal); }
-    .footer-center { font-family: var(--fd); font-weight: 900; font-size: 1rem; text-transform: uppercase; letter-spacing: -0.02em; color: var(--bone); }
-    .footer-center em { color: var(--signal); font-style: normal; }
-    .footer-right { display: flex; gap: 0.5rem; }
-    .footer-icon { width: 34px; height: 34px; border: 1.5px solid rgba(242,240,235,0.2); display: flex; align-items: center; justify-content: center; color: rgba(242,240,235,0.4); cursor: pointer; transition: border-color 0s, color 0s, transform 0.08s ease; }
-    .footer-icon:hover { border-color: var(--signal); color: var(--signal); transform: translate(-1px,-1px); }
-    .footer-icon svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-
-    .reveal { opacity: 0; transform: translateY(28px); }
-
-    @media (prefers-reduced-motion: reduce) {
-      .marquee-track, .scroll-badge-svg { animation: none; }
-      .avail-dot { animation: none; }
-    }
-  </style>
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="scroll-prog" id="sp"></div>
-
-<!-- ══ NAV ════════════════════════════════════════════════════ -->
-<div class="nav-wrap" id="navWrap">
-  <nav class="nav-bar" aria-label="Main navigation">
-    <a href="/" class="nav-logo" aria-current="page" aria-label="Home">
-      <div class="geo" aria-hidden="true"><div class="g-c"></div><div class="g-s"></div><div class="g-t"></div></div>
-      ZS
-    </a>
-    <div class="nav-pills" id="navPills">
-      <a href="/work"    class="nav-pill" data-tip="Projects + experience"><span class="pill-circle"></span><span class="label-stack"><span class="label-default">Work</span><span class="label-hover" aria-hidden="true">Work</span></span></a>
-      <a href="/journey" class="nav-pill" data-tip="How I got here"><span class="pill-circle"></span><span class="label-stack"><span class="label-default">Journey</span><span class="label-hover" aria-hidden="true">Journey</span></span></a>
-      <a href="/contact" class="nav-pill" data-tip="Good work starts here"><span class="pill-circle"></span><span class="label-stack"><span class="label-default">Contact</span><span class="label-hover" aria-hidden="true">Contact</span></span></a>
-    </div>
-    <div class="nav-right">
-      <div class="nav-avail" data-tip="Open to select projects"><div class="avail-dot"></div>Available</div>
-      <a href="https://linkedin.com/in/zaimsharoon" class="nav-icon" aria-label="LinkedIn" target="_blank" rel="noopener" data-tip="LinkedIn">
-        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="wordmark" href="/" aria-label="Zaim Sharoon, home">
+        <span class="wordmark-mark" aria-hidden="true"></span>
+        <span>Zaim Sharoon</span>
       </a>
-      <a href="mailto:me@zaimsharoon.com" class="nav-icon" aria-label="Email" data-tip="me@zaimsharoon.com">
-        <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-      </a>
-    </div>
-  </nav>
-</div>
-<div id="tip"></div>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Toggle navigation" data-menu-toggle><span></span></button>
+      <div class="nav-links" id="site-menu" data-menu>
+        <a class="nav-link" href="/" aria-current="page">Home</a>
+        <a class="nav-link" href="/work">Work</a>
+        <a class="nav-link" href="/journey">Journey</a>
+        <a class="nav-link" href="/contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="mailto:me@zaimsharoon.com">Start a conversation</a>
+    </nav>
+  </header>
 
-<!-- ══ HERO ════════════════════════════════════════════════════ -->
-<section class="hero" id="home">
-  <div class="hero-name-wrap">
-    <h1 class="hero-name" aria-label="Zaim Sharoon">
-      <span class="name-line">Zaim</span>
-      <span class="name-line outline">Sharoon</span>
-    </h1>
-  </div>
-  <div class="hero-rule"></div>
-  <div class="hero-meta">
-    <div class="meta-left">
-      <svg class="meta-globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      <span class="meta-loc">Lahore · Ferghana</span>
-    </div>
-    <div class="scroll-badge" role="img" aria-label="Scroll down">
-      <svg class="scroll-badge-svg" viewBox="0 0 100 100" aria-hidden="true">
-        <defs><path id="circ" d="M 50,50 m -34,0 a 34,34 0 1,1 68,0 a 34,34 0 1,1 -68,0"/></defs>
-        <text font-family="DM Mono, monospace" font-size="8.5" font-weight="500" fill="#111111" letter-spacing="2">
-          <textPath href="#circ">SCROLL DOWN • SCROLL DOWN • </textPath>
-        </text>
-      </svg>
-      <div class="scroll-badge-center">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </div>
-    </div>
-    <div class="meta-right">
-      <div class="meta-role">Brand & Marketing<br>Strategist<br>Since 2023</div>
-    </div>
-  </div>
-</section>
+  <main id="main">
+    <section class="hero">
+      <div class="shell">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">Zaim Sharoon · Brand & Growth Strategist</p>
+            <h1>
+              Find the
+              <span class="teal-word">signal.</span>
+              <span class="indent">Build the system.</span>
+            </h1>
+          </div>
 
-<!-- ══ MARQUEE ══════════════════════════════════════════════════ -->
-<div class="marquee-section">
-  <div class="marquee-row">
-    <div class="marquee-track fwd" aria-hidden="true">
-      <span class="m-item-lg">Brand Strategy</span><span class="m-star-lg">★</span>
-      <span class="m-item-lg">GTM Systems</span><span class="m-star-lg">★</span>
-      <span class="m-item-lg">Outbound</span><span class="m-star-lg">★</span>
-      <span class="m-item-lg">LinkedIn</span><span class="m-star-lg">★</span>
-      <span class="m-item-lg">Positioning</span><span class="m-star-lg">★</span>
-      <span class="m-item-lg">Available Now</span><span class="m-star-lg">★</span>
-      <span class="m-item-lg">Brand Strategy</span><span class="m-star-lg">★</span>
-      <span class="m-item-lg">GTM Systems</span><span class="m-star-lg">★</span>
-      <span class="m-item-lg">Outbound</span><span class="m-star-lg">★</span>
-      <span class="m-item-lg">LinkedIn</span><span class="m-star-lg">★</span>
-      <span class="m-item-lg">Positioning</span><span class="m-star-lg">★</span>
-      <span class="m-item-lg">Available Now</span><span class="m-star-lg">★</span>
-    </div>
-  </div>
-  <div class="marquee-divider"></div>
-  <div class="marquee-row">
-    <div class="marquee-track rev" aria-hidden="true">
-      <span class="m-item-sm">English Plus · Brand Identity</span><span class="m-star-sm">·</span>
-      <span class="m-item-sm">Candle · Brand Architecture</span><span class="m-star-sm">·</span>
-      <span class="m-item-sm">SRP Outbound System</span><span class="m-star-sm">·</span>
-      <span class="m-item-sm">Insured Nomads · Content</span><span class="m-star-sm">·</span>
-      <span class="m-item-sm">Simon & Sons · Branding</span><span class="m-star-sm">·</span>
-      <span class="m-item-sm">Cloud School · NGO</span><span class="m-star-sm">·</span>
-      <span class="m-item-sm">English Plus · Brand Identity</span><span class="m-star-sm">·</span>
-      <span class="m-item-sm">Candle · Brand Architecture</span><span class="m-star-sm">·</span>
-      <span class="m-item-sm">SRP Outbound System</span><span class="m-star-sm">·</span>
-      <span class="m-item-sm">Insured Nomads · Content</span><span class="m-star-sm">·</span>
-      <span class="m-item-sm">Simon & Sons · Branding</span><span class="m-star-sm">·</span>
-      <span class="m-item-sm">Cloud School · NGO</span><span class="m-star-sm">·</span>
-    </div>
-  </div>
-</div>
-
-<!-- ══ PHILOSOPHY HSCROLL ══════════════════════════════════════ -->
-<div class="hpin" id="hpin">
-  <div class="hpin-label" aria-hidden="true"></div>
-  <div class="hpin-prog" id="hprog"></div>
-  <div class="htrack" id="htrack">
-    <span class="w xl outline">Strategy</span>
-    <span class="gap-md"></span>
-    <span class="w lg dim">without</span>
-    <span class="gap-md"></span>
-    <span class="w xl bone">execution</span>
-    <span class="gap-lg"></span>
-    <span class="hshape">
-      <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-        <circle cx="30" cy="30" r="26" stroke="#C8390A" stroke-width="2.5"/>
-        <circle cx="30" cy="30" r="9" fill="#C8390A"/>
-      </svg>
-    </span>
-    <span class="gap-lg"></span>
-    <span class="w md dim">is just an</span>
-    <span class="gap-md"></span>
-    <span class="w xl red">opinion.</span>
-    <span class="gap-xl"></span>
-    <span class="pill">build the system</span>
-    <span class="gap-xl"></span>
-    <span class="hshape">
-      <svg width="54" height="54" viewBox="0 0 54 54" fill="none">
-        <rect x="8" y="8" width="38" height="38" stroke="rgba(242,240,235,0.2)" stroke-width="2" transform="rotate(45 27 27)"/>
-        <rect x="16" y="16" width="22" height="22" fill="#C8390A" transform="rotate(45 27 27)"/>
-      </svg>
-    </span>
-    <span class="gap-xl"></span>
-    <span class="w md dim">the system</span>
-    <span class="gap-md"></span>
-    <span class="w lg bone">is what you</span>
-    <span class="gap-md"></span>
-    <span class="w xl outline-r">leave</span>
-    <span class="gap-md"></span>
-    <span class="w xl bone">behind.</span>
-    <span class="gap-xl"></span>
-    <span class="hstar">★</span>
-    <div class="cta-wrap">
-      <span class="cta-eyebrow">still reading?</span>
-      <div class="cta-text">
-        <span class="cta-line">Scroll down.</span>
-        <span class="cta-line">The <span class="cta-red">right ones</span></span>
-        <span class="cta-line"><span class="cta-out">never stop</span> halfway.</span>
-      </div>
-      <a href="#beliefs" class="cta-btn-h">
-        Keep going
-        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </a>
-    </div>
-    <div class="end-pad"></div>
-  </div>
-</div>
-
-<!-- ══ WHAT I BELIEVE ══════════════════════════════════════════ -->
-<section class="beliefs-section" id="beliefs">
-  <div class="beliefs-inner">
-    <div class="beliefs-header reveal">
-      <div>
-        <div class="beliefs-coord">[02 / Philosophy] — What I believe</div>
-        <h2 class="beliefs-title">What I<br><em>Believe</em></h2>
-      </div>
-    </div>
-    <div class="beliefs-grid reveal">
-      <div class="belief-card">
-        <div class="belief-num">01 / Honest reads</div>
-        <div class="belief-title">Honest reads are the product</div>
-        <p class="belief-body">The most valuable thing I bring to a project is willingness to say "this won't work" before you've committed. That's rare, and it saves more money than good execution does.</p>
-      </div>
-      <div class="belief-card">
-        <div class="belief-num">02 / The earned lens</div>
-        <div class="belief-title">Comfort makes you assume. Discomfort makes you observe.</div>
-        <p class="belief-body">I've had more of the second one. That's not a disclaimer — it's the whole point. The sharpest reads come from people who had to actually look, because assuming wasn't an option.</p>
-      </div>
-      <div class="belief-card">
-        <div class="belief-num">03 / Compounding work</div>
-        <div class="belief-title">Good work compounds</div>
-        <p class="belief-body">A brand system built properly in 2024 still earns in 2027. A cold email sequence with a clean ICP still generates meetings six months later. The standard for "done" is whether it keeps working.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SELECTED WORK ════════════════════════════════════════════ -->
-<section class="work-section" id="selected-work">
-  <div class="work-inner">
-    <div class="work-header-row reveal">
-      <div>
-        <div class="work-coord">[03 / Work] — Selected projects</div>
-        <h2 class="work-title">Selected<br><em>Work</em></h2>
-      </div>
-      <a href="/work" class="view-all-btn">
-        View all work
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-    <div class="work-grid reveal">
-
-      <div class="work-card">
-        <div class="wc-head signal">
-          <span class="wc-index">001</span>
-          <span class="wc-tag">Brand Strategy</span>
+          <div class="hero-intro reveal">
+            <p class="hero-role">Strategy that reaches the work.</p>
+            <p class="hero-copy">I turn fuzzy business problems into clear positioning, useful websites, content, and growth systems for software teams and founder-led companies.</p>
+            <div class="hero-actions">
+              <a class="button" href="/work">See selected work</a>
+              <a class="button secondary" href="/journey">Meet the person</a>
+            </div>
+          </div>
         </div>
-        <div class="wc-body">
-          <div class="wc-name">Candle</div>
-          <div class="wc-region">USA · School Management System · Ongoing</div>
-          <p class="wc-desc">Brand strategy and marketing for an EdTech school management system. Architecture, positioning, GTM — ongoing engagement across the full brand and go-to-market stack.</p>
-          <div class="wc-tags">
-            <span class="wc-t">Brand Strategy</span>
-            <span class="wc-t">Positioning</span>
-            <span class="wc-t">GTM</span>
+
+        <div class="relay" aria-label="Working method">
+          <div class="relay-step">
+            <span class="relay-node" aria-hidden="true"></span>
+            <strong>Recognize</strong>
+            <span>Find the real problem, not the first description of it.</span>
+          </div>
+          <div class="relay-step">
+            <span class="relay-node" aria-hidden="true"></span>
+            <strong>Connect</strong>
+            <span>Join the brand, business, audience, and delivery reality.</span>
+          </div>
+          <div class="relay-step">
+            <span class="relay-node" aria-hidden="true"></span>
+            <strong>Grow</strong>
+            <span>Build something the team can keep using after handoff.</span>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="work-card">
-        <div class="wc-head ink">
-          <span class="wc-index">002</span>
-          <span class="wc-tag">Outbound · GTM</span>
-        </div>
-        <div class="wc-body">
-          <div class="wc-name">Silk Road Professionals</div>
-          <div class="wc-region">US · UK · Uzbekistan · Tajikistan</div>
-          <p class="wc-desc">Marketing and sales at a 32-engineer firm. The spotlight: built the full outbound GTM system — ICP definition, cold email sequences, LinkedIn strategy, pipeline. Still running today.</p>
-          <div class="wc-tags">
-            <span class="wc-t">Outbound</span>
-            <span class="wc-t">Cold Email</span>
-            <span class="wc-t">Sales</span>
+    <section class="section">
+      <div class="shell signal-statement reveal">
+        <div class="navy-panel">
+          <p class="eyebrow" style="color: var(--bone)">The gap I work in</p>
+          <h2>Good ideas often arrive without a working system.</h2>
+          <div class="proof-line">
+            <span>Software services</span>
+            <span>Education technology</span>
+            <span>Founder communities</span>
           </div>
         </div>
-      </div>
-
-      <div class="work-card">
-        <div class="wc-head signal">
-          <span class="wc-index">003</span>
-          <span class="wc-tag">Growth Marketing</span>
+        <div class="plain-panel">
+          <p>That gap is where I am useful: translating between what leadership means, what the market hears, and what the team can actually ship.</p>
+          <p>I can move from the positioning argument to the page, campaign, outbound offer, or playbook without losing the reason it exists.</p>
         </div>
-        <div class="wc-body">
-          <div class="wc-name">Insured Nomads</div>
-          <div class="wc-region">USA · Remote · Dec 2024 – May 2025</div>
-          <p class="wc-desc">Associate Marketing Specialist for a US insurance and travel brand. Website design contribution, SEO, blog writing, Instagram and LinkedIn content. First US marketing operation at this level.</p>
-          <div class="wc-tags">
-            <span class="wc-t">SEO</span>
-            <span class="wc-t">Content</span>
-            <span class="wc-t">Social</span>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="selected-work-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="section-kicker">Selected work</p>
+          <div>
+            <h2 class="section-title" id="selected-work-title">Three live problems. Three different systems.</h2>
+            <p class="section-lede">Current work spans business development, brand architecture, web direction, analytics, and growth. The connecting thread is clarity that survives execution.</p>
           </div>
         </div>
-      </div>
 
+        <article class="work-feature reveal">
+          <div class="work-feature-content">
+            <span class="case-index">01 · Current role</span>
+            <h3 class="case-title">Silk Road Professionals</h3>
+            <p class="case-role">Business development · positioning · outbound</p>
+            <p class="case-copy">For a Central Asian software team serving English-speaking markets, I shape how the company explains its value and turns expertise into qualified conversations.</p>
+          </div>
+          <aside class="work-feature-rail" aria-label="Selected SRP deliverables">
+            <ul class="artifact-list">
+              <li>Offer and ICP definition</li>
+              <li>Outbound system</li>
+              <li>LinkedIn and website direction</li>
+              <li>Case-study architecture</li>
+            </ul>
+            <a class="button" href="/work#srp">Read the case</a>
+          </aside>
+        </article>
+
+        <div class="work-pair">
+          <article class="work-card teal-cap reveal">
+            <div>
+              <span class="case-index" style="color: var(--navy); margin-bottom: 42px">02 · Brand system</span>
+              <h3>Candle</h3>
+              <p>Built the architecture and visual direction for an education software family, giving Candle K12 the spotlight without erasing Candle Primary or the parent brand.</p>
+            </div>
+            <div class="tag-row" aria-label="Candle work areas">
+              <span class="tag">Brand architecture</span>
+              <span class="tag">Identity system</span>
+              <span class="tag">Website direction</span>
+            </div>
+          </article>
+
+          <article class="work-card red-cap reveal">
+            <div>
+              <span class="case-index" style="color: var(--red); margin-bottom: 42px">03 · Growth engagement</span>
+              <h3>Cultivating Impact</h3>
+              <p>Turned analytics and scattered brand touchpoints into a clearer website, LinkedIn presence, and member-growth system for founder peer groups.</p>
+            </div>
+            <div class="tag-row" aria-label="Cultivating Impact work areas">
+              <span class="tag">Analytics</span>
+              <span class="tag">Brand structure</span>
+              <span class="tag">Member growth</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="approach-title">
+      <div class="shell approach">
+        <div class="approach-intro reveal">
+          <p class="eyebrow">How I work</p>
+          <h2 id="approach-title">Clarity before volume.</h2>
+          <p>No giant discovery theatre. No campaign before the offer makes sense. No polished page carrying a confused idea.</p>
+        </div>
+        <div>
+          <article class="approach-step reveal">
+            <span class="approach-number">01</span>
+            <div>
+              <h3>Read the room</h3>
+              <p>Listen for the gap between what the team says, what customers experience, and what the business needs next.</p>
+            </div>
+          </article>
+          <article class="approach-step reveal">
+            <span class="approach-number">02</span>
+            <div>
+              <h3>Make the argument clear</h3>
+              <p>Choose the audience, sharpen the promise, and make the tradeoffs visible before adding channels or design.</p>
+            </div>
+          </article>
+          <article class="approach-step reveal">
+            <span class="approach-number">03</span>
+            <div>
+              <h3>Build the repeatable part</h3>
+              <p>Turn the strategy into pages, messages, workflows, and guidance that another person can actually operate.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-band" aria-labelledby="about-title">
+      <div class="shell about-grid">
+        <h2 class="about-quote reveal" id="about-title">Different places taught me to read the room before trying to change it.</h2>
+        <div class="about-copy reveal">
+          <p>I grew up in Punjab, studied marketing in Lahore, spent a semester in the United States, and now work from Ferghana, Uzbekistan. Crossing cultures made observation a working skill, not a brand story.</p>
+          <p>The quieter rule underneath the work is stewardship: tell the truth, serve people well, keep your word, and leave what you touch stronger than you found it.</p>
+          <a href="/journey">Read the short journey →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="shell cta-grid">
+        <h2 class="reveal">Bring the <span>messy</span> version.</h2>
+        <div class="cta-side reveal">
+          <p>You do not need a polished brief. Tell me what is stuck, what changed, or what the team keeps circling.</p>
+          <a class="button" href="/contact">Start the conversation</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div>© <span data-year>2026</span> Zaim Sharoon · Ferghana, Uzbekistan</div>
+      <div>Truth · service · stewardship</div>
+      <div class="footer-links">
+        <a href="mailto:me@zaimsharoon.com">Email</a>
+        <a href="https://www.linkedin.com/in/zaimsharoon" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
     </div>
-  </div>
-</section>
-
-<!-- ══ CTA SECTION ══════════════════════════════════════════════ -->
-<section class="cta-section">
-  <div class="cta-coord">[04 / Contact] — Ready to build?</div>
-  <h2 class="cta-heading reveal">
-    Let's build<br>
-    something <em>real.</em>
-  </h2>
-  <div class="cta-buttons reveal">
-    <a href="/work" class="btn-ghost">
-      View Work
-      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-    <a href="/contact" class="btn-primary">
-      Get in Touch
-      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- ══ FOOTER ════════════════════════════════════════════════════ -->
-<footer class="footer">
-  <div class="footer-left">
-    © 2026 Zaim Sharoon<br>
-    <span>Ferghana, Uzbekistan</span> · Built with intent
-  </div>
-  <div class="footer-center">ZS <em>◆</em></div>
-  <div class="footer-right">
-    <a href="https://linkedin.com/in/zaimsharoon" class="footer-icon" aria-label="LinkedIn" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
-    </a>
-    <a href="mailto:me@zaimsharoon.com" class="footer-icon" aria-label="Email">
-      <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-    </a>
-  </div>
-</footer>
-
-<script>
-(function() {
-  gsap.registerPlugin(ScrollTrigger);
-
-  /* Scroll progress */
-  const sp = document.getElementById('sp');
-  window.addEventListener('scroll', () => {
-    sp.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
-  }, { passive: true });
-
-  /* Nav entrance */
-  const navWrap = document.getElementById('navWrap');
-  gsap.set(navWrap, { y: -20 });
-  gsap.to(navWrap, { opacity: 1, y: 0, duration: 0.7, ease: 'back.out(1.4)', delay: 0.2 });
-
-  /* Pill rising circle */
-  const pills = document.querySelectorAll('.nav-pill');
-  const tls = [], tweens = [];
-  function setup(pill, i) {
-    const circle = pill.querySelector('.pill-circle');
-    const ld = pill.querySelector('.label-default');
-    const lh = pill.querySelector('.label-hover');
-    const r = pill.getBoundingClientRect();
-    const w = r.width || 100, h = r.height || 38;
-    const R = ((w*w)/4 + h*h) / (2*h);
-    const D = Math.ceil(2*R)+2;
-    const delta = Math.ceil(R - Math.sqrt(Math.max(0, R*R - (w*w)/4)))+1;
-    circle.style.width = D+'px'; circle.style.height = D+'px'; circle.style.bottom = -delta+'px';
-    gsap.set(circle, { xPercent:-50, scale:0, transformOrigin:'50% '+(D-delta)+'px' });
-    gsap.set(ld, { y:0 }); gsap.set(lh, { y:h+12, opacity:0 });
-    const tl = gsap.timeline({ paused:true });
-    tl.to(circle, { scale:1.25, xPercent:-50, duration:0.65, ease:'power3.out', overwrite:'auto' }, 0);
-    tl.to(ld, { y:-(h+8), duration:0.5, ease:'power3.out', overwrite:'auto' }, 0);
-    tl.to(lh, { y:0, opacity:1, duration:0.5, ease:'power3.out', overwrite:'auto' }, 0);
-    tls[i] = tl;
-  }
-  pills.forEach((p,i) => setup(p,i));
-  let rsz;
-  window.addEventListener('resize', () => { clearTimeout(rsz); rsz = setTimeout(() => pills.forEach((p,i) => setup(p,i)), 150); });
-  pills.forEach((pill,i) => {
-    pill.addEventListener('mouseenter', () => { tweens[i]?.kill(); tweens[i] = tls[i]?.tweenTo(tls[i].duration(), { duration:0.35, ease:'power3.out', overwrite:'auto' }); });
-    pill.addEventListener('mouseleave', () => { tweens[i]?.kill(); tweens[i] = tls[i]?.tweenTo(0, { duration:0.28, ease:'power3.in', overwrite:'auto' }); });
-  });
-
-  /* Tooltip */
-  const tip = document.getElementById('tip');
-  function showTip(el, text) {
-    tip.textContent = text; tip.classList.add('show');
-    const r = el.getBoundingClientRect(), tw = tip.offsetWidth;
-    let left = r.left + r.width/2 - tw/2;
-    left = Math.max(8, Math.min(left, window.innerWidth - tw - 8));
-    tip.style.left = left+'px'; tip.style.top = (r.bottom+10)+'px';
-  }
-  function hideTip() { tip.classList.remove('show'); }
-  document.querySelectorAll('[data-tip]').forEach(el => {
-    el.addEventListener('mouseenter', () => showTip(el, el.dataset.tip));
-    el.addEventListener('mouseleave', hideTip);
-  });
-
-  /* Hero entrance */
-  gsap.set('.hero-name', { opacity:0, y:40 });
-  gsap.set('.hero-rule', { scaleX:0, transformOrigin:'left center' });
-  gsap.set('.hero-meta > *', { opacity:0, y:16 });
-  const htl = gsap.timeline({ delay:0.5 });
-  htl.to('.hero-name',     { opacity:1, y:0, duration:0.7, ease:'power3.out' })
-     .to('.hero-rule',     { scaleX:1, duration:0.5, ease:'power3.out' }, '-=0.2')
-     .to('.hero-meta > *', { opacity:1, y:0, duration:0.4, ease:'power2.out', stagger:0.1 }, '-=0.2');
-
-  /* HSCROLL */
-  const pin   = document.getElementById('hpin');
-  const track = document.getElementById('htrack');
-  const prog  = document.getElementById('hprog');
-  function setH() { pin.style.height = window.innerHeight + 'px'; }
-  setH();
-  let hanim;
-  function buildScroll() {
-    if (hanim) { hanim.scrollTrigger?.kill(); hanim.kill(); }
-    setH();
-    hanim = gsap.to(track, {
-      x: () => -(track.scrollWidth - window.innerWidth),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: pin, pin: true, scrub: 1.2,
-        start: 'top top',
-        end: () => '+=' + (track.scrollWidth - window.innerWidth),
-        invalidateOnRefresh: true,
-        onUpdate: s => { prog.style.width = (s.progress * 100) + '%'; }
-      }
-    });
-  }
-  document.fonts ? document.fonts.ready.then(buildScroll) : buildScroll();
-  window.addEventListener('resize', () => { clearTimeout(window._rsz); window._rsz = setTimeout(buildScroll, 200); });
-
-  /* Scroll reveal */
-  gsap.utils.toArray('.reveal').forEach(el => {
-    gsap.fromTo(el,
-      { opacity:0, y:32 },
-      { opacity:1, y:0, duration:0.55, ease:'power3.out',
-        scrollTrigger: { trigger:el, start:'top 88%', toggleActions:'play none none none' } }
-    );
-  });
-
-})();
-</script>
-
+  </footer>
 </body>
-</html> 
+</html>
