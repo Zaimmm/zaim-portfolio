@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Zaim Sharoon is a Brand & Growth Strategist building positioning, websites, content, and growth systems for software teams and founder-led companies.">
+  <meta name="description" content="Zaim Sharoon is a Brand & Growth Strategist working across brand, content, growth, and digital experience.">
   <meta name="theme-color" content="#123A5F">
   <title>Zaim Sharoon — Brand & Growth Strategist</title>
   <link rel="canonical" href="https://zaimsharoon.com/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <script src="/site.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&amp;family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -25,12 +25,13 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
 
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
       <a class="wordmark" href="/" aria-label="Zaim Sharoon, home">
-        <span class="wordmark-mark" aria-hidden="true"></span>
-        <span>Zaim Sharoon</span>
+        <span class="wordmark-first">Zaim</span>
+        <span class="wordmark-last">Sharoon</span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Toggle navigation" data-menu-toggle><span></span></button>
       <div class="nav-links" id="site-menu" data-menu>
@@ -39,157 +40,117 @@
         <a class="nav-link" href="/journey">Journey</a>
         <a class="nav-link" href="/contact">Contact</a>
       </div>
-      <a class="nav-cta" href="mailto:me@zaimsharoon.com">Start a conversation</a>
+      <a class="nav-cta" href="mailto:me@zaimsharoon.com">Start a conversation <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
 
   <main id="main">
-    <section class="hero">
+    <section class="hero" data-hero>
       <div class="shell">
-        <div class="hero-grid">
-          <div>
-            <p class="eyebrow">Zaim Sharoon · Brand & Growth Strategist</p>
-            <h1>
-              Find the
-              <span class="teal-word">signal.</span>
-              <span class="indent">Build the system.</span>
-            </h1>
-          </div>
+        <div class="hero-context" data-hero-context>
+          <span>Brand & Growth Strategist</span>
+          <span>Ferghana, Uzbekistan</span>
+        </div>
 
-          <div class="hero-intro reveal">
-            <p class="hero-role">Strategy that reaches the work.</p>
-            <p class="hero-copy">I turn fuzzy business problems into clear positioning, useful websites, content, and growth systems for software teams and founder-led companies.</p>
-            <div class="hero-actions">
-              <a class="button" href="/work">See selected work</a>
-              <a class="button secondary" href="/journey">Meet the person</a>
+        <h1 aria-label="Find the signal. Build the system.">
+          <span class="hero-line"><span>Find the <em>signal.</em></span></span>
+          <span class="hero-line hero-line--offset"><span>Build the system.</span></span>
+        </h1>
+
+        <div class="hero-foot" data-hero-foot>
+          <p>I work across brand, content, and growth—turning unclear business problems into direction a team can use.</p>
+          <div class="hero-links">
+            <a class="signal-link" href="/work">Selected work <span aria-hidden="true">↗</span></a>
+            <a class="signal-link signal-link--quiet" href="/journey">My journey <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <div class="method" data-method aria-label="Working method: recognize, connect, grow">
+          <span class="method-track" aria-hidden="true"><span></span></span>
+          <div class="method-step"><strong>Recognize</strong><span>the real problem</span></div>
+          <div class="method-step"><strong>Connect</strong><span>the moving parts</span></div>
+          <div class="method-step"><strong>Grow</strong><span>what proves useful</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--thesis" aria-labelledby="thesis-title">
+      <div class="shell thesis-grid">
+        <div class="depth-panel reveal reveal--depth">
+          <h2 id="thesis-title">The idea only matters if it reaches the work.</h2>
+        </div>
+        <div class="thesis-copy reveal">
+          <p>That is the gap I work in: between what leadership means, what people understand, and what a team can actually execute.</p>
+          <p>I connect the positioning to the content, page, campaign, or growth system—without losing the reason behind it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="work-title">
+      <div class="shell">
+        <header class="section-heading reveal">
+          <h2 id="work-title">Current work</h2>
+          <p>Three engagements, each at a different point where strategy has to become something people can see, understand, or use.</p>
+        </header>
+
+        <div class="project-list">
+          <article class="project-row project-row--navy reveal reveal--depth">
+            <div class="project-heading">
+              <h3>Silk Road Professionals</h3>
+              <p>Brand & Growth Strategist</p>
             </div>
-          </div>
-        </div>
+            <div class="project-body">
+              <p>I handle brand, content, and growth for a software team serving English-speaking markets from Ferghana, connecting how the company presents itself with how it builds demand.</p>
+              <p class="project-scope">Brand direction · Content systems · Growth strategy · Website direction</p>
+              <a class="signal-link signal-link--light" href="/work#srp">See the engagement <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
 
-        <div class="relay" aria-label="Working method">
-          <div class="relay-step">
-            <span class="relay-node" aria-hidden="true"></span>
-            <strong>Recognize</strong>
-            <span>Find the real problem, not the first description of it.</span>
-          </div>
-          <div class="relay-step">
-            <span class="relay-node" aria-hidden="true"></span>
-            <strong>Connect</strong>
-            <span>Join the brand, business, audience, and delivery reality.</span>
-          </div>
-          <div class="relay-step">
-            <span class="relay-node" aria-hidden="true"></span>
-            <strong>Grow</strong>
-            <span>Build something the team can keep using after handoff.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="shell signal-statement reveal">
-        <div class="navy-panel">
-          <p class="eyebrow" style="color: var(--bone)">The gap I work in</p>
-          <h2>Good ideas often arrive without a working system.</h2>
-          <div class="proof-line">
-            <span>Software services</span>
-            <span>Education technology</span>
-            <span>Founder communities</span>
-          </div>
-        </div>
-        <div class="plain-panel">
-          <p>That gap is where I am useful: translating between what leadership means, what the market hears, and what the team can actually ship.</p>
-          <p>I can move from the positioning argument to the page, campaign, outbound offer, or playbook without losing the reason it exists.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="selected-work-title">
-      <div class="shell">
-        <div class="section-heading reveal">
-          <p class="section-kicker">Selected work</p>
-          <div>
-            <h2 class="section-title" id="selected-work-title">Three live problems. Three different systems.</h2>
-            <p class="section-lede">Current work spans business development, brand architecture, web direction, analytics, and growth. The connecting thread is clarity that survives execution.</p>
-          </div>
-        </div>
-
-        <article class="work-feature reveal">
-          <div class="work-feature-content">
-            <span class="case-index">01 · Current role</span>
-            <h3 class="case-title">Silk Road Professionals</h3>
-            <p class="case-role">Business development · positioning · outbound</p>
-            <p class="case-copy">For a Central Asian software team serving English-speaking markets, I shape how the company explains its value and turns expertise into qualified conversations.</p>
-          </div>
-          <aside class="work-feature-rail" aria-label="Selected SRP deliverables">
-            <ul class="artifact-list">
-              <li>Offer and ICP definition</li>
-              <li>Outbound system</li>
-              <li>LinkedIn and website direction</li>
-              <li>Case-study architecture</li>
-            </ul>
-            <a class="button" href="/work#srp">Read the case</a>
-          </aside>
-        </article>
-
-        <div class="work-pair">
-          <article class="work-card teal-cap reveal">
-            <div>
-              <span class="case-index" style="color: var(--navy); margin-bottom: 42px">02 · Brand system</span>
+          <article class="project-row reveal">
+            <div class="project-heading">
               <h3>Candle</h3>
-              <p>Built the architecture and visual direction for an education software family, giving Candle K12 the spotlight without erasing Candle Primary or the parent brand.</p>
+              <p>Brand system & website direction</p>
             </div>
-            <div class="tag-row" aria-label="Candle work areas">
-              <span class="tag">Brand architecture</span>
-              <span class="tag">Identity system</span>
-              <span class="tag">Website direction</span>
+            <div class="project-body">
+              <p>I am helping shape Candle’s brand system and website direction so its education technology products feel clear, coherent, and recognizably related.</p>
+              <p class="project-scope">Brand architecture · Visual direction · Digital experience</p>
+              <a class="signal-link" href="/work#candle">See the engagement <span aria-hidden="true">↗</span></a>
             </div>
           </article>
 
-          <article class="work-card red-cap reveal">
-            <div>
-              <span class="case-index" style="color: var(--red); margin-bottom: 42px">03 · Growth engagement</span>
+          <article class="project-row project-row--teal reveal">
+            <div class="project-heading">
               <h3>Cultivating Impact</h3>
-              <p>Turned analytics and scattered brand touchpoints into a clearer website, LinkedIn presence, and member-growth system for founder peer groups.</p>
+              <p>Strategy & growth</p>
             </div>
-            <div class="tag-row" aria-label="Cultivating Impact work areas">
-              <span class="tag">Analytics</span>
-              <span class="tag">Brand structure</span>
-              <span class="tag">Member growth</span>
+            <div class="project-body">
+              <p>I help Harry Jones with strategy and growth for Cultivating Impact, strengthening how the work is understood and how the right founders reach a conversation.</p>
+              <p class="project-scope">Growth strategy · Brand clarity · Digital touchpoints</p>
+              <a class="signal-link signal-link--light" href="/work#cultivating-impact">See the engagement <span aria-hidden="true">↗</span></a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="approach-title">
-      <div class="shell approach">
+    <section class="section section--approach" aria-labelledby="approach-title">
+      <div class="shell approach-grid">
         <div class="approach-intro reveal">
-          <p class="eyebrow">How I work</p>
-          <h2 id="approach-title">Clarity before volume.</h2>
-          <p>No giant discovery theatre. No campaign before the offer makes sense. No polished page carrying a confused idea.</p>
+          <h2 id="approach-title">One thread through the work.</h2>
+          <p>Clarity first. Then the system, page, or campaign that makes it useful.</p>
         </div>
-        <div>
+        <div class="approach-track" data-approach-track>
           <article class="approach-step reveal">
-            <span class="approach-number">01</span>
-            <div>
-              <h3>Read the room</h3>
-              <p>Listen for the gap between what the team says, what customers experience, and what the business needs next.</p>
-            </div>
+            <h3>Read the room</h3>
+            <p>Find the gap between what the team says, what people experience, and what the business needs next.</p>
           </article>
           <article class="approach-step reveal">
-            <span class="approach-number">02</span>
-            <div>
-              <h3>Make the argument clear</h3>
-              <p>Choose the audience, sharpen the promise, and make the tradeoffs visible before adding channels or design.</p>
-            </div>
+            <h3>Make the argument clear</h3>
+            <p>Choose the audience, sharpen the promise, and make the tradeoffs visible before adding channels or polish.</p>
           </article>
           <article class="approach-step reveal">
-            <span class="approach-number">03</span>
-            <div>
-              <h3>Build the repeatable part</h3>
-              <p>Turn the strategy into pages, messages, workflows, and guidance that another person can actually operate.</p>
-            </div>
+            <h3>Build the repeatable part</h3>
+            <p>Turn the strategy into content, pages, workflows, and guidance another person can keep using.</p>
           </article>
         </div>
       </div>
@@ -197,21 +158,21 @@
 
     <section class="about-band" aria-labelledby="about-title">
       <div class="shell about-grid">
-        <h2 class="about-quote reveal" id="about-title">Different places taught me to read the room before trying to change it.</h2>
+        <h2 class="about-quote reveal" id="about-title">Different contexts taught me to look before I prescribe.</h2>
         <div class="about-copy reveal">
-          <p>I grew up in Punjab, studied marketing in Lahore, spent a semester in the United States, and now work from Ferghana, Uzbekistan. Crossing cultures made observation a working skill, not a brand story.</p>
+          <p>I grew up in Punjab, studied marketing in Lahore, and now work from Ferghana, Uzbekistan. Working remotely with a US company and living in Central Asia made cross-cultural observation part of the job.</p>
           <p>The quieter rule underneath the work is stewardship: tell the truth, serve people well, keep your word, and leave what you touch stronger than you found it.</p>
-          <a href="/journey">Read the short journey →</a>
+          <a class="signal-link signal-link--light" href="/journey">Read the short journey <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
 
     <section class="cta-band">
       <div class="shell cta-grid">
-        <h2 class="reveal">Bring the <span>messy</span> version.</h2>
+        <h2 class="reveal">Bring the messy version.</h2>
         <div class="cta-side reveal">
           <p>You do not need a polished brief. Tell me what is stuck, what changed, or what the team keeps circling.</p>
-          <a class="button" href="/contact">Start the conversation</a>
+          <a class="button button--bone" href="/contact">Start the conversation <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
