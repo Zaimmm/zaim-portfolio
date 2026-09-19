@@ -805,12 +805,12 @@ p {
 
 .case-study {
   display: grid;
-  grid-template-columns: minmax(230px, 0.62fr) minmax(0, 1.38fr);
+  grid-template-columns: minmax(360px, 38%) minmax(0, 1fr);
   border-bottom: var(--rule);
 }
 
 .case-study-aside {
-  padding: clamp(36px, 5vw, 66px) clamp(24px, 4vw, 54px) clamp(36px, 5vw, 66px) max(24px, calc((100vw - min(1180px, calc(100vw - 48px))) / 2));
+  padding: clamp(36px, 5vw, 72px);
   background: var(--navy);
   color: var(--bone);
 }
@@ -822,10 +822,11 @@ p {
 .case-study-aside h2 {
   margin: 0 0 16px;
   font-family: var(--display);
-  font-size: clamp(2rem, 4vw, 4.2rem);
+  font-size: clamp(2rem, 2.6vw, 3.6rem);
   line-height: 0.92;
   letter-spacing: -0.05em;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .case-meta {
